@@ -14,6 +14,13 @@ return [
     'name' => 'Name',
     'phone' => 'Phone',
     'ourTeam'=>'Our Team',
-
+    'position'=>'Position',
+    'contactUs'=>'Contact Us',
+    'location'=>'Location',
+    'save'=>'Save',
+    'createdAt'=>'Created At',
+    'services'=>'Services',
+    'admins'=>'Admins',
+    'password'=>'Password'
 
 ];

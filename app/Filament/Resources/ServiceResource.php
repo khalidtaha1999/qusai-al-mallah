@@ -18,7 +18,17 @@ class ServiceResource extends Resource
 {
     protected static ?string $model = Service::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-wrench';
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('general.services');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('general.services');
+    }
 
     public static function form(Form $form): Form
     {
@@ -68,18 +78,14 @@ class ServiceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label(__('general.title'))
+                    ->wrap()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('content')
-                    ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label(__('general.createdAt'))
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -91,7 +97,7 @@ class ServiceResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])->paginated([10]);
     }
 
     public static function getRelations(): array

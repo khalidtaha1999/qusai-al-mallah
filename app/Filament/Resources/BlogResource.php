@@ -40,7 +40,7 @@ class BlogResource extends Resource
         return __('general.blog');
     }
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
@@ -109,12 +109,15 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->label(__('general.title'))->searchable(),
-                TextColumn::make('slug')->label(__('general.slug'))->searchable(),
-                ImageColumn::make('image')->label(__('general.image')),
+                TextColumn::make('title')->label(__('general.title'))->searchable()->wrap(),
+                TextColumn::make('slug')->label(__('general.slug'))->searchable()->wrap(),
                 IconColumn::make('status')
                     ->label(__('general.published'))
-                    ->boolean()
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('general.createdAt'))
+                    ->sortable()
+                    ->dateTime()
 
             ])
             ->filters([

@@ -5,7 +5,9 @@ namespace App\Filament\Pages;
 use App\Models\AboutUs;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -31,6 +33,7 @@ class AboutUsEdit extends Page implements HasForms
     {
         return __('general.aboutUs');
     }
+
     public function getTitle(): string|Htmlable
     {
         return __('general.aboutUs');
@@ -38,7 +41,7 @@ class AboutUsEdit extends Page implements HasForms
 
     public function mount(): void
     {
-        $aboutUs=AboutUs::first()?->toArray();
+        $aboutUs = AboutUs::first()?->toArray();
         $this->form->fill($aboutUs);
     }
 
@@ -75,8 +78,33 @@ class AboutUsEdit extends Page implements HasForms
                     'strike',
                     'undo',
                 ]),
+
+                Fieldset::make(__('general.contactUs'))
+                    ->schema([
+                        Grid::make(3)
+                            ->schema([
+                                TextInput::make('email')
+                                    ->label(__('general.email'))
+                                    ->type('email')
+                                    ->required()
+                                    ->maxLength(255),
+
+                                TextInput::make('phone')
+                                    ->label(__('general.phone'))
+                                    ->required()
+                                    ->maxLength(255),
+
+                                TextInput::make('location')
+                                    ->label(__('general.location'))
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                    ])
+
             ])
             ->statePath('data');
+
+
     }
 
 
@@ -85,7 +113,7 @@ class AboutUsEdit extends Page implements HasForms
         return [
             CreateAction::make()
                 ->action('save')
-                ->label('حفظ')
+                ->label(__('general.save'))
                 ->successNotification(
                     Notification::make()
                         ->success()
@@ -101,7 +129,7 @@ class AboutUsEdit extends Page implements HasForms
         $aboutUs = AboutUs::first();
         $data = $this->form->getState();
         if ($aboutUs) {
-            $aboutUs->updateOrCreate(['id'=>$aboutUs->id],
+            $aboutUs->updateOrCreate(['id' => $aboutUs->id],
                 $data
             );
         } else {

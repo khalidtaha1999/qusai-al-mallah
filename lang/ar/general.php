@@ -15,5 +15,17 @@ return [
     'name'=>'الاسم',
     'phone'=>'رقم الهاتف',
     'ourTeam'=>'الفريق',
+    'position'=>'الوظيفة',
+    'contactUs'=>'التواصل',
+    'location'=>'الموقع',
+    'save'=>'حفظ',
+    'createdAt'=>'أنشئت في',
+    'services'=>'الخدمات',
+    'admins'=>'المسؤولون',
+    'password'=>'كلمة السر',
+
+
+
+
 
 ];

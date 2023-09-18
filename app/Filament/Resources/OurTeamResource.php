@@ -21,7 +21,7 @@ class OurTeamResource extends Resource
 {
     protected static ?string $model = OurTeam::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function getPluralLabel(): ?string
     {
@@ -37,26 +37,16 @@ class OurTeamResource extends Resource
     {
         return $form
             ->schema([
-
                 Grid::make(1)
                     ->schema([
-                        FileUpload::make('image')->label(__('general.image'))->nullable(),
+                        FileUpload::make('image')->label(__('general.image'))->image()->nullable(),
 
                     ]),
-                Grid::make(3)
-                    ->schema([
-                        TextInput::make('name')->label(__('general.name'))->required(),
-                        TextInput::make('email')->type('email')->label(__('general.email'))->nullable(),
-                        TextInput::make('phone')->label(__('general.phone'))->nullable(),
-
-                    ]),
-
                 Grid::make()
                     ->schema([
-                        Textarea::make('content_ar')->label(__('general.contentAr'))->required(),
-                        Textarea::make('content_en')->label(__('general.contentEn'))->required(),
+                        TextInput::make('name')->label(__('general.name'))->required()->maxLength(255),
+                        TextInput::make('position')->label(__('general.position'))->nullable()->maxLength(255),
                     ]),
-
 
             ]);
     }
@@ -65,7 +55,17 @@ class OurTeamResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                  ->label(__('general.name'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('position')
+                  ->label(__('general.position'))
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('general.createdAt'))
+                    ->sortable()
+                    ->dateTime()
             ])
             ->filters([
                 //
