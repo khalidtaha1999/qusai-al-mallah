@@ -22,8 +22,8 @@
 
                 <li class="dropdown "><a href="#" ><span><i class="lang fa-solid fa-globe fa-2xl"></i></span></a>
                     <ul>
-                        <li><a href="/ar">العربية</a></li>
-                        <li><a href="/en">English</a></li>
+                        <li><a href="{{LaravelLocalization::getLocalizedURL('ar')}}">العربية</a></li>
+                        <li><a href="{{LaravelLocalization::getLocalizedURL('en')}}">English</a></li>
                     </ul>
                 </li>
             </ul>
