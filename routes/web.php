@@ -17,16 +17,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
-    Route::get('/',function (){
-
-        return view('welcome');
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+    Route::get('/', function () {
+        return view('home');
     });
 });
 
-//Route::get('/change-language/{locale}', [LanguageController::class,'change'])->name('change.language');
 
-
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
