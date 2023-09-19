@@ -65,5 +65,5 @@ jobs:
         with:
           app-name: 'qusai-al-mallah'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_5a95262335ff43d79380aad5072c463e }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
           package: .
