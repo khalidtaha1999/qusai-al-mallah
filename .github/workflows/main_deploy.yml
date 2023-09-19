@@ -28,10 +28,13 @@ jobs:
         with:
           files: 'composer.json'
 
-      - name: Run composer validate and install if composer.json exists
+      - name: Validate composer.json if it exists
         if: steps.check_files.outputs.files_exists == 'true'
-        run: |
-          composer validate --no-check-publish && composer install --prefer-dist --no-progress
+        run: composer validate --no-check-publish
+
+      - name: Install Composer dependencies if composer.json exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: composer install --prefer-dist --no-progress
 
       - name: Zip the application files
         run: zip -r release.zip ./*
@@ -64,5 +67,5 @@ jobs:
         with:
           app-name: 'qusai-al-mallah'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_5a95262335ff43d79380aad5072c463e }}
           package: .
