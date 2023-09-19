@@ -14,9 +14,12 @@ class EditUser extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        if (Auth::id() == request()->route()->parameters['record']) {
+
+
+        if (Auth::user()) {
             return [];
         }
+
 
         return [
             Actions\DeleteAction::make(),
