@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OurTeamResource\Pages;
 use App\Filament\Resources\OurTeamResource\RelationManagers;
 use App\Models\OurTeam;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
@@ -16,6 +17,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class OurTeamResource extends Resource
 {
@@ -39,8 +41,11 @@ class OurTeamResource extends Resource
             ->schema([
                 Grid::make(1)
                     ->schema([
-                        FileUpload::make('image')->label(__('general.image'))->image()->nullable(),
-
+                        FileUpload::make('image')->label(__('general.image'))->image()
+                            ->directory('our_team')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
+                                    ->prepend(Carbon::now()->timestamp))->required(),
                     ]),
                 Grid::make()
                     ->schema([
@@ -56,10 +61,10 @@ class OurTeamResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                  ->label(__('general.name'))
+                    ->label(__('general.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('position')
-                  ->label(__('general.position'))
+                    ->label(__('general.position'))
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('created_at')

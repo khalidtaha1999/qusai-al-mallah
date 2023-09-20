@@ -88,8 +88,6 @@
         </section><!-- End Why Choose Us Section -->
 
 
-
-
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
@@ -99,20 +97,11 @@
 
                 <div class="row gy-4" data-aos="fade-up">
                     <div class="col-lg-4">
-                        <img src="frontend/img/about.jpg" class="img-fluid" alt="">
+                        <img src="storage/{{$aboutUs->image}}" class="img-fluid mx-auto d-block" alt="">
                     </div>
                     <div class="col-lg-8">
                         <div class="content ps-lg-5">
-                            <h3>Voluptatem dignissimos provident quasi</h3>
-                            <p>
-                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-                            </p>
-                            <ul>
-                                <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                            </ul>
+                            {!! Config::get('app.locale')=='ar' ? $aboutUs->content_ar :$aboutUs->content_en !!}
                         </div>
                     </div>
                 </div>
@@ -125,69 +114,29 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Our Services</h2>
+                    <h2>{{__('general.ourServices')}}</h2>
 
                 </div>
 
                 <div class="row gy-5">
 
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon flex-shrink-0"><i class="bi bi-briefcase" style="color: #f57813;"></i></div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                                excepturi sint occaecati cupiditate non provident</p>
-                        </div>
-                    </div>
-                    <!-- End Service Item -->
+                    @foreach($services as $service)
 
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon flex-shrink-0"><i class="bi bi-card-checklist" style="color: #15a04a;"></i>
-                        </div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Dolor Sitema</a></h4>
-                            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat tarad limino ata</p>
-                        </div>
-                    </div><!-- End Service Item -->
+                        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
 
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                        <div class="icon flex-shrink-0"><i class="bi bi-bar-chart" style="color: #d90769;"></i></div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Sed ut perspiciatis</a></h4>
-                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur</p>
-                        </div>
-                    </div><!-- End Service Item -->
+                            <img class="img-fluid service-image " width="100px" src="storage/{{$service->image}}">
 
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                        <div class="icon flex-shrink-0"><i class="bi bi-binoculars" style="color: #15bfbc;"></i></div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Magni Dolores</a></h4>
-                            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                officia deserunt mollit anim id est laborum</p>
-                        </div>
-                    </div><!-- End Service Item -->
 
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-                        <div class="icon flex-shrink-0"><i class="bi bi-brightness-high" style="color: #f5cf13;"></i>
-                        </div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Nemo Enim</a></h4>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                blanditiis praesentium voluptatum deleniti atque</p>
-                        </div>
-                    </div><!-- End Service Item -->
+                            <div>
+                                <h4 class="title"><a
+                                        class="stretched-link">{{Config::get('app.locale')=='ar'?$service->title_ar:$service->title_en}}</a>
+                                </h4>
+                                <p class="description">{{Config::get('app.locale')=='ar'?$service->content_ar:$service->content_en}}</p>
+                            </div>
+                        </div><!-- End Service Item -->
 
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-                        <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week" style="color: #1335f5;"></i>
-                        </div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Eiusmod Tempor</a></h4>
-                            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero
-                                tempore, cum soluta nobis est eligendi</p>
-                        </div>
-                    </div><!-- End Service Item -->
+                    @endforeach
+
 
                 </div>
 
@@ -206,64 +155,31 @@
 
                 <div class="row gy-5">
 
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="post-box">
-                            <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
-                            <div class="meta">
-                                <span class="post-date">Tue, December 12</span>
-                                <span class="post-author"> / Julia Parker</span>
-                            </div>
-                            <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-                            <p>Illum voluptas ab enim placeat. Adipisci enim velit nulla. Vel omnis laudantium.
-                                Asperiores eum ipsa est officiis. Modi qui magni est...</p>
-                            <a href="https://www.google.com" class="readmore stretched-link"><span>Read More</span><i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
+                    @foreach($blogs as $blog)
 
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="post-box">
-                            <div class="post-img"><img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
-                            <div class="meta">
-                                <span class="post-date">Fri, September 05</span>
-                                <span class="post-author"> / Mario Douglas</span>
-                            </div>
-                            <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
-                            <p>Voluptatem nesciunt omnis libero autem tempora enim ut ipsam id. Odit quia ab eum
-                                assumenda. Quisquam omnis doloribus...</p>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
+                        <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="post-box">
+                                <div class="post-img"><img src="storage/{{$blog->image}}" class="img-fluid" alt="">
+                                </div>
+                                <div class="meta">
+                                    <span class="post-date">{{ \Carbon\Carbon::parse($blog->created_at)->format('j-F-Y') }}</span>
+                                </div>
+                                <h3 class="post-title">{{Config::get('app.locale')=='ar'?$blog->title_ar:$blog->title_en}}</h3>
+                                <p>{{Config::get('app.locale')=='ar'?$blog->brief_ar:$blog->brief_en}}</p>
+                                <a href="/services/{{$blog->slug}}"
+                                   class="readmore stretched-link"><span>{{__('general.readMore')}}</span>
+                                    @if(Config::get('app.locale')=='ar')
+                                    <i class="bi bi-arrow-left"></i>
+                                @else
+                                        <i class="bi bi-arrow-right"></i>
 
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="post-box">
-                            <div class="post-img"><img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
-                            <div class="meta">
-                                <span class="post-date">Tue, July 27</span>
-                                <span class="post-author"> / Lisa Hunter</span>
+                                    @endif
+                                </a>
+
                             </div>
-                            <h3 class="post-title">Quia assumenda est et veritati</h3>
-                            <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis
-                                repellat sed quae consectetur magnam...</p>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                                    class="bi bi-arrow-right"></i></a>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="post-box">
-                            <div class="post-img"><img src="assets/img/blog/blog-4.jpg" class="img-fluid" alt=""></div>
-                            <div class="meta">
-                                <span class="post-date">Tue, Sep 16</span>
-                                <span class="post-author"> / Mario Douglas</span>
-                            </div>
-                            <h3 class="post-title">Pariatur quia facilis similique deleniti</h3>
-                            <p>Et consequatur eveniet nam voluptas commodi cumque ea est ex. Aut quis omnis sint ipsum
-                                earum quia eligendi...</p>
-                            <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
+
+                    @endforeach
                 </div>
             </div>
         </section><!-- End Recent Blog Posts Section -->

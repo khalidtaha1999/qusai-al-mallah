@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogResource\Pages;
 use App\Models\Blog;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
@@ -19,6 +20,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class BlogResource extends Resource
 {
@@ -32,7 +35,7 @@ class BlogResource extends Resource
 
     public static function getPluralLabel(): ?string
     {
-     return __('general.blog');
+        return __('general.blog');
     }
 
     public static function getLabel(): ?string
@@ -48,17 +51,27 @@ class BlogResource extends Resource
             ->schema([
                 Grid::make(1)
                     ->schema([
-                        FileUpload::make('image')->label(__('general.image'))->required(),
+                        FileUpload::make('image')->label(__('general.image'))->image()
+                            ->directory('blogs')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
+                                    ->prepend(Carbon::now()->timestamp))->required(),
+                    ]),
+                Grid::make()
+                    ->schema([
+                        Forms\Components\Textarea::make('title_en')->label(__('general.titleEn'))->required()->maxLength(255),
+
+                        Forms\Components\Textarea::make('title_ar')->label(__('general.titleAr'))->required()->maxLength(255),
 
                     ]),
                 Grid::make()
                     ->schema([
-                        TextInput::make('title')->label(__('general.title'))->required(),
-                        TextInput::make('slug')->label(__('general.slug'))->required(),
+                        Forms\Components\Textarea::make('brief_en')->label(__('general.briefEn'))->required()->maxLength(255),
+                        Forms\Components\Textarea::make('brief_ar')->label(__('general.briefAr'))->required()->maxLength(255),
 
                     ]),
 
-                Grid::make(1)
+                Grid::make(2)
                     ->schema([
                         Select::make('status')
                             ->label(__('general.status'))
@@ -66,41 +79,18 @@ class BlogResource extends Resource
                                 '1' => __('general.published'),
                                 '0' => __('general.unpublished'),
                             ])->required(),
+
+                        TextInput::make('slug')->label(__('general.slug'))->required()->maxLength(35),
+
                     ]),
                 Grid::make(1)
                     ->schema([
-                        RichEditor::make('content_ar')->label(__('general.contentAr'))->required()->toolbarButtons([
-                            'blockquote',
-                            'bold',
-                            'bulletList',
-                            'codeBlock',
-                            'h2',
-                            'h3',
-                            'italic',
-                            'link',
-                            'orderedList',
-                            'redo',
-                            'strike',
-                            'undo',
-                        ]),
+                        TinyEditor::make('content_ar')->label(__('general.contentAr'))->required(),
                     ]),
 
                 Grid::make(1)
                     ->schema([
-                        RichEditor::make('content_en')->label(__('general.contentEn'))->required()->toolbarButtons([
-                            'blockquote',
-                            'bold',
-                            'bulletList',
-                            'codeBlock',
-                            'h2',
-                            'h3',
-                            'italic',
-                            'link',
-                            'orderedList',
-                            'redo',
-                            'strike',
-                            'undo',
-                        ]),
+                        TinyEditor::make('content_en')->label(__('general.contentEn'))->required()
                     ]),
             ]);
     }
@@ -109,7 +99,8 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->label(__('general.title'))->searchable()->wrap(),
+                TextColumn::make('title_en')->label(__('general.titleEn'))->searchable()->wrap(),
+                TextColumn::make('title_ar')->label(__('general.titleAr'))->searchable()->wrap(),
                 TextColumn::make('slug')->label(__('general.slug'))->searchable()->wrap(),
                 IconColumn::make('status')
                     ->label(__('general.published'))

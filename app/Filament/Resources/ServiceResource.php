@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ServiceResource\Pages;
 use App\Models\Service;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
@@ -13,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ServiceResource extends Resource
 {
@@ -37,23 +39,26 @@ class ServiceResource extends Resource
 
                 Grid::make(1)
                     ->schema([
-                        FileUpload::make('image')
-                            ->label(__('general.image'))
-                            ->image()
-                            ->required(),
-
+                        FileUpload::make('image')->label(__('general.image'))->image()
+                            ->directory('our_team')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
+                                    ->prepend(Carbon::now()->timestamp))->required(),
                     ]),
 
 
-                Grid::make(1)
+                Grid::make()
                     ->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->label(__('general.title'))
+                        Forms\Components\TextInput::make('title_ar')
+                            ->label(__('general.titleAr'))
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('title_en')
+                            ->label(__('general.titleEn'))
                             ->required()
                             ->maxLength(255),
 
                     ]),
-
 
 
                 Grid::make()
@@ -77,8 +82,12 @@ class ServiceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
-                    ->label(__('general.title'))
+                Tables\Columns\TextColumn::make('title_en')
+                    ->label(__('general.titleEn'))
+                    ->wrap()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('title_ar')
+                    ->label(__('general.titleAr'))
                     ->wrap()
                     ->searchable(),
 

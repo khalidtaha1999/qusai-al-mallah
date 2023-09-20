@@ -15,8 +15,8 @@ class EditUser extends EditRecord
     protected function getHeaderActions(): array
     {
 
-
-        if (Auth::user()) {
+        if (Auth::user())
+        {
             return [];
         }
 

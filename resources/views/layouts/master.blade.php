@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Nova Bootstrap Template - Index</title>
+    <title>Qusai Al Mallah</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -43,13 +43,20 @@
 
 <body class="page-index">
 @if( Config::get('app.locale') =='ar')
-
     <style>
         body{
             direction: rtl;
+            font-family: Alexandria, serif ;
+        }
+    </style>
+@else
+    <style>
+        body{
+            font-family: myriad pro, serif ;
         }
     </style>
 @endif
+
 
 @yield('content')
 

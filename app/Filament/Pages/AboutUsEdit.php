@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Models\AboutUs;
+use Carbon\Carbon;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\Fieldset;
@@ -17,6 +18,8 @@ use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
 use Illuminate\Contracts\Support\Htmlable;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class AboutUsEdit extends Page implements HasForms
 {
@@ -49,36 +52,14 @@ class AboutUsEdit extends Page implements HasForms
     {
         return $form
             ->schema([
-                FileUpload::make('image')->label(__('general.image'))->required(),
-                RichEditor::make('content_ar')->label(__('general.contentAr'))->required()->toolbarButtons([
-                    'blockquote',
-                    'bold',
-                    'bulletList',
-                    'codeBlock',
-                    'h2',
-                    'h3',
-                    'italic',
-                    'link',
-                    'orderedList',
-                    'redo',
-                    'strike',
-                    'undo',
-                ]),
-                RichEditor::make('content_en')->label(__('general.contentEn'))->required()->toolbarButtons([
-                    'blockquote',
-                    'bold',
-                    'bulletList',
-                    'codeBlock',
-                    'h2',
-                    'h3',
-                    'italic',
-                    'link',
-                    'orderedList',
-                    'redo',
-                    'strike',
-                    'undo',
-                ]),
+                FileUpload::make('image')->label(__('general.image'))->image()
+                    ->directory('about-image')
+                    ->getUploadedFileNameForStorageUsing(
+                        fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
+                            ->prepend(Carbon::now()->timestamp))->required(),
 
+                TinyEditor::make('content_ar')->label(__('general.contentAr'))->required(),
+                TinyEditor::make('content_en')->label(__('general.contentEn'))->required(),
                 Fieldset::make(__('general.contactUs'))
                     ->schema([
                         Grid::make(3)

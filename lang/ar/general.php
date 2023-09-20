@@ -12,20 +12,24 @@ return [
     'published' => 'نشر',
     'unpublished' => ' عدم النشر',
     'email' => 'البريد الالكتروني',
-    'name'=>'الاسم',
-    'phone'=>'رقم الهاتف',
-    'ourTeam'=>'الفريق',
-    'position'=>'الوظيفة',
-    'contactUs'=>'التواصل',
-    'location'=>'الموقع',
-    'save'=>'حفظ',
-    'createdAt'=>'أنشئت في',
-    'services'=>'الخدمات',
-    'admins'=>'المسؤولون',
-    'password'=>'كلمة السر',
-
-
-
+    'name' => 'الاسم',
+    'phone' => 'رقم الهاتف',
+    'ourTeam' => 'الفريق',
+    'position' => 'الوظيفة',
+    'contactUs' => 'التواصل',
+    'location' => 'الموقع',
+    'save' => 'حفظ',
+    'createdAt' => 'أنشئت في',
+    'services' => 'الخدمات',
+    'admins' => 'المسؤولون',
+    'password' => 'كلمة السر',
+    'titleAr' => 'العنوان بالعربية',
+    'titleEn' => 'العنوان بالانجليزية',
+    'ourServices'=>'خدماتنا',
+    'briefEn'=>'النبذة بالانجليزية',
+    'briefAr'=>'النبذة بالعربية',
+    'readMore'=>'قرائة المزيد',
+    'recentBlogPosts'=>'منشورات المدونة الأخيرة',
 
 
 ];
