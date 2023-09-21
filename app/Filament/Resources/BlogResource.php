@@ -55,7 +55,10 @@ class BlogResource extends Resource
                             ->directory('blogs')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
-                                    ->prepend(Carbon::now()->timestamp))->required(),
+                                    ->prepend(Carbon::now()->timestamp))->required()->maxSize(120)
+                            ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\FileUpload $component) {
+                                $livewire->validateOnly($component->getStatePath());
+                            }),
                     ]),
                 Grid::make()
                     ->schema([
@@ -80,7 +83,7 @@ class BlogResource extends Resource
                                 '0' => __('general.unpublished'),
                             ])->required(),
 
-                        TextInput::make('slug')->label(__('general.slug'))->required()->maxLength(35),
+                        TextInput::make('slug')->label(__('general.slug'))->required()->maxLength(35)->rules(['alpha_dash']),
 
                     ]),
                 Grid::make(1)

@@ -39,19 +39,33 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label(__('general.name'))
+                    ->label(__('general.userName'))
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->label(__('general.email'))
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
+                    ->unique(ignoreRecord: true)
+                    ->alphaNum()
+                    ->regex('/^[a-zA-Z\s.,!?\'"()]+$/')
+
+                    ->maxLength(16),
+
+
                 TextInput::make('password')
+                    ->label(__('general.password'))
+                    ->password()
+                    ->same('passwordConfirmation')
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                    ->dehydrated(fn ($state) => filled($state))
+                    ->required(fn (string $context): bool => $context === 'create')
+                    ->minLength(8)
+                    ->regex('/^(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*\d).+$/')
+                    ->helperText(__('general.passwordHint')),
+
+                TextInput::make('passwordConfirmation')
+                    ->label(__('general.passwordConfirmation'))
                     ->password()
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->dehydrated(fn ($state) => filled($state))
                     ->required(fn (string $context): bool => $context === 'create')
+                   ->dehydrated(false),
             ]);
     }
 
@@ -60,8 +74,7 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
+                    ->label(__('userName'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('general.createdAt'))
@@ -96,4 +109,5 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
+
 }

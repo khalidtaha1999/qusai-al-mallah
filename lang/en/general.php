@@ -28,6 +28,9 @@ return [
     'briefEn'=>'Brief In English',
     'briefAr'=>'Brief In Arabic',
     'readMore'=>'Read More',
+    'userName'=>'User Name',
+    'passwordHint'=>'Password must contain at least one uppercase letter and one special character.',
+    'passwordConfirmation'=>'password Confirmation',
 
 
 ];
