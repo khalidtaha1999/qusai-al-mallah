@@ -58,8 +58,8 @@ class AboutUsEdit extends Page implements HasForms
                         fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
                             ->prepend(Carbon::now()->timestamp))->required(),
 
-                TinyEditor::make('content_ar')->label(__('general.contentAr'))->required(),
-                TinyEditor::make('content_en')->label(__('general.contentEn'))->required(),
+                TinyEditor::make('content_ar')->label(__('general.contentAr'))->required()->maxLength(2000),
+                TinyEditor::make('content_en')->label(__('general.contentEn'))->required()->maxLength(2000),
                 Fieldset::make(__('general.contactUs'))
                     ->schema([
                         Grid::make(3)
