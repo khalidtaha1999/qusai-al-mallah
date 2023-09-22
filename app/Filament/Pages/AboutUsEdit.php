@@ -72,13 +72,14 @@ class AboutUsEdit extends Page implements HasForms
 
                                 TextInput::make('phone')
                                     ->label(__('general.phone'))
+                                    ->tel()
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(13),
 
                                 TextInput::make('location')
                                     ->label(__('general.location'))
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(30),
                             ])
                     ])
 
