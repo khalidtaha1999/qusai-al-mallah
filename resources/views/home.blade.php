@@ -149,13 +149,14 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Recent Blog Posts</h2>
+                    <h2>{{__('general.recentBlogPosts')}}</h2>
 
                 </div>
 
                 <div class="row gy-5">
 
                     @foreach($blogs as $blog)
+
 
                         <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="post-box">
@@ -166,7 +167,7 @@
                                 </div>
                                 <h3 class="post-title">{{Config::get('app.locale')=='ar'?$blog->title_ar:$blog->title_en}}</h3>
                                 <p>{{Config::get('app.locale')=='ar'?$blog->brief_ar:$blog->brief_en}}</p>
-                                <a href="/services/{{$blog->slug}}"
+                                <a href="/{{Config::get('app.locale')}}/blogs/{{$blog->slug}}"
                                    class="readmore stretched-link"><span>{{__('general.readMore')}}</span>
                                     @if(Config::get('app.locale')=='ar')
                                     <i class="bi bi-arrow-left"></i>

@@ -31,6 +31,8 @@ return [
     'userName'=>'User Name',
     'passwordHint'=>'Password must contain at least one uppercase letter and one special character.',
     'passwordConfirmation'=>'password Confirmation',
+    'home'=>'Home',
+    'recentBlogPosts'=>'Recent Blog Posts',
 
 
 ];
