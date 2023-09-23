@@ -24,15 +24,17 @@ return [
     'password' => 'Password',
     'titleAr' => 'Title In Arabic',
     'titleEn' => 'Title In English',
-    'ourServices'=>'Our Services',
-    'briefEn'=>'Brief In English',
-    'briefAr'=>'Brief In Arabic',
-    'readMore'=>'Read More',
-    'userName'=>'User Name',
-    'passwordHint'=>'Password must contain at least one uppercase letter and one special character.',
-    'passwordConfirmation'=>'password Confirmation',
-    'home'=>'Home',
-    'recentBlogPosts'=>'Recent Blog Posts',
+    'ourServices' => 'Our Services',
+    'briefEn' => 'Brief In English',
+    'briefAr' => 'Brief In Arabic',
+    'readMore' => 'Read More',
+    'userName' => 'User Name',
+    'passwordHint' => 'Password must contain at least one uppercase letter and one special character.',
+    'passwordConfirmation' => 'password Confirmation',
+    'home' => 'Home',
+    'recentBlogPosts' => 'Recent Blog Posts',
+    'slider' => 'Slider',
+    'whyChooseUs' => 'Why Choose Us'
 
 
 ];
