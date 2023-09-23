@@ -14,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class UserResource extends Resource
 {
@@ -43,8 +44,7 @@ class UserResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->alphaNum()
-                    ->regex('/^[a-zA-Z\s.,!?\'"()]+$/')
-
+                    ->regex('/^[a-zA-Z0-9]+$/')
                     ->maxLength(16),
 
 
@@ -52,11 +52,17 @@ class UserResource extends Resource
                     ->label(__('general.password'))
                     ->password()
                     ->same('passwordConfirmation')
+                    ->rules([
+                        Password::min(8)
+                            ->mixedCase()
+                            ->numbers()
+                            ->letters()
+                            ->symbols(),
+                    ])
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->dehydrated(fn ($state) => filled($state))
                     ->required(fn (string $context): bool => $context === 'create')
                     ->minLength(8)
-                    ->regex('/^(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*\d).+$/')
                     ->helperText(__('general.passwordHint')),
 
                 TextInput::make('passwordConfirmation')

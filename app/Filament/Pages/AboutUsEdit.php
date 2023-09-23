@@ -18,6 +18,7 @@ use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
@@ -74,6 +75,7 @@ class AboutUsEdit extends Page implements HasForms
                                     ->label(__('general.phone'))
                                     ->tel()
                                     ->required()
+
                                     ->maxLength(13),
 
                                 TextInput::make('location')
@@ -106,10 +108,16 @@ class AboutUsEdit extends Page implements HasForms
         ];
     }
 
-    public function save(): void
+    public function save()
     {
+
+
         $aboutUs = AboutUs::first();
+
         $data = $this->form->getState();
+        $data['phone']=str_replace(' ', '', $data['phone']);
+
+
         if ($aboutUs) {
             $aboutUs->updateOrCreate(['id' => $aboutUs->id],
                 $data
@@ -121,5 +129,7 @@ class AboutUsEdit extends Page implements HasForms
             ->success()
             ->title(__('filament-panels::resources/pages/edit-record.notifications.saved.title'))
             ->send();
+
+
     }
 }
