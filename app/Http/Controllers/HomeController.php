@@ -20,7 +20,7 @@ class HomeController extends Controller
     {
         $aboutUs=AboutUs::select('image','content_'.Config::get('app.locale'))->first();
         $services=Service::select('image','title_'.Config::get('app.locale'),'content_'.Config::get('app.locale'))->limit(6)->get();
-        $blogs= Blog::select('id','image','title_'.Config::get('app.locale'),'brief_'.Config::get('app.locale'),'created_at')->limit(4)->get();
+        $blogs= Blog::select('id','slug','image','title_'.Config::get('app.locale'),'brief_'.Config::get('app.locale'),'created_at')->limit(4)->get();
 
 
      return view('home')->with(['aboutUs'=>$aboutUs,'services'=>$services,'blogs'=>$blogs]);
