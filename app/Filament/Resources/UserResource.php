@@ -80,7 +80,7 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('userName'))
+                    ->label(__('general.userName'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('general.createdAt'))
@@ -94,9 +94,7 @@ class UserResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+
             ]);
     }
 
