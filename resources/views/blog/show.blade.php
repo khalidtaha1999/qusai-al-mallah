@@ -1,0 +1,73 @@
+
+@extends('layouts.master')
+
+@section('content')
+
+    @include('layouts.header')
+
+
+
+
+
+
+
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/blog-header.jpg');">
+        <div class="container position-relative d-flex flex-column align-items-center">
+
+            <h2>Blog Details</h2>
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Blog Details</li>
+            </ol>
+
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Details Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row g-5 justify-content-center">
+
+                <div class="col-lg-8 mx-auto" data-aos="fade-up" data-aos-delay="200">
+
+                    <article class="blog-details">
+
+                        <div class="post-img text-center">
+                            <img src="{{asset('storage/'.$blog->image)}}" alt="" class="img-fluid">
+                        </div>
+
+                        <h2 class="title">{{Config::get('app.locale')=='ar'?$blog->title_ar:$blog->title_en}}</h2>
+
+                        <div class="meta-top">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a ><time datetime="2020-01-01">{{ \Carbon\Carbon::parse($blog->created_at)->format('j-F-Y') }}</time></a></li>
+                            </ul>
+                        </div><!-- End meta top -->
+
+                        <div class="content">
+                            {!! Config::get('app.locale')=='ar'?$blog->content_ar:$blog->content_en !!}
+                        </div><!-- End post content -->
+
+
+                    </article><!-- End blog post -->
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Blog Details Section -->
+
+</main><!-- End #main -->
+
+
+
+
+
+    @include('layouts.footer')
+@endsection

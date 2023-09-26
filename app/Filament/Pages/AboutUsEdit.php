@@ -74,6 +74,7 @@ class AboutUsEdit extends Page implements HasForms
                                 TextInput::make('phone')
                                     ->label(__('general.phone'))
                                     ->tel()
+                                    ->regex('/^\S*$/u')
                                     ->required()
 
                                     ->maxLength(13),

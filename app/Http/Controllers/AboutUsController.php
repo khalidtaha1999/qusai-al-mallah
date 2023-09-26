@@ -13,11 +13,11 @@ class AboutUsController extends Controller
     public function __invoke()
     {
 
-        $aboutUs=AboutUs::select('image','content_'.Config::get('app.locale'))->first();
-        $ourTeams=OurTeam::select('image','position','name')->get();
+        $aboutUs = AboutUs::select('image', 'content_' . Config::get('app.locale'))->first();
+        $ourTeams = OurTeam::select('image', 'position', 'name')->get();
         $whyChooseUs = WhyChooseUs::first();
 
 
-        return view('about-us.index')->with(['aboutUs'=>$aboutUs,'ourTeams'=>$ourTeams,'whyChooseUs'=>$whyChooseUs]);
+        return view('about-us.index')->with(['aboutUs' => $aboutUs, 'ourTeams' => $ourTeams, 'whyChooseUs' => $whyChooseUs]);
     }
 }

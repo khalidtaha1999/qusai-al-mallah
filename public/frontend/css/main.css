@@ -941,16 +941,24 @@ section {
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .recent-posts .post-box .post-img {
     overflow: hidden;
     position: relative;
+    background-size: cover;
 }
 
 .recent-posts .post-box .post-img img {
     transition: 0.5s;
+    width: 200px; /* Set the width to your desired size */
+    height: auto; /* Set the height to your desired size */
+    object-fit: cover; /* This ensures the image covers the specified dimensions */
+    border-radius: 20px;
 }
+
+
 
 .recent-posts .post-box .meta {
     margin-top: 15px;
@@ -983,12 +991,11 @@ section {
 }
 
 .recent-posts .post-box .readmore {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    line-height: 1;
-    transition: 0.3s;
-    margin-top: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center; /
 }
 
 .recent-posts .post-box .readmore i {

@@ -40,13 +40,11 @@ class ServiceResource extends Resource
                 Grid::make(1)
                     ->schema([
                         FileUpload::make('image')->label(__('general.image'))->image()
-                            ->directory('our_team')
+                            ->directory('services')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
                                     ->prepend(Carbon::now()->timestamp))->required(),
                     ]),
-
-
                 Grid::make()
                     ->schema([
                         Forms\Components\TextInput::make('title_ar')

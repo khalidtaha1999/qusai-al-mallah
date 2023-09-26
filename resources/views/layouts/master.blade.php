@@ -60,7 +60,27 @@
 
 @yield('content')
 
+@if(Config::get('app.locale')=='ar')
+    <script type="text/javascript">
+        var replaceDigits = function() {
+            var map = ["٠","١","٢","٣","٤","٥","٦","٧","٨","٩"];
+            var elements = document.body.getElementsByTagName("*");
 
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+                for (var j = 0; j < element.childNodes.length; j++) {
+                    var node = element.childNodes[j];
+                    if (node.nodeType === 3) {
+                        node.textContent = node.textContent.replace(/\d/g, function(match) {
+                            return map[parseInt(match)];
+                        });
+                    }
+                }
+            }
+        }
+        window.onload = replaceDigits;
+    </script>
+@endif
 <!-- Vendor JS Files -->
 <script src="{{asset("frontend/vendor/bootstrap/js/bofrontendotstrap.bundle.min.js")}}"></script>
 <script src="{{asset("frontend/vendor/aos/aos.js")}}"></script>
