@@ -34,7 +34,10 @@ return [
     'home' => 'Home',
     'recentBlogPosts' => 'Recent Blog Posts',
     'slider' => 'Slider',
-    'whyChooseUs' => 'Why Choose Us'
+    'whyChooseUs' => 'Why Choose Us',
+    'subject'=>'Subject',
+    'send'=>'Send',
+    'usefulLinks'=>'Useful Links',
 
 
 ];

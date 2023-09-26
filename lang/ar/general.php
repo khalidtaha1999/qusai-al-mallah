@@ -35,7 +35,12 @@ return [
     'passwordConfirmation'=>'تأكيد كلمة المرور',
     'home'=>'الرئيسية',
     'slider'=>'سلايدر',
-    'whyChooseUs'=>'لماذا نحن'
+    'whyChooseUs'=>'لماذا نحن',
+    'subject'=>'العنوان',
+    'message'=>'الرسالة',
+    'send'=>'ارسال',
+    'usefulLinks'=>'روابط مفيدة',
+
 
 
 ];

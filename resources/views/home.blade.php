@@ -108,43 +108,40 @@
         <!-- ======= Recent Blog Posts Section ======= -->
         <section id="recent-posts" class="recent-posts">
             <div class="container" data-aos="fade-up">
-
                 <div class="section-header">
                     <h2>{{__('general.recentBlogPosts')}}</h2>
-
                 </div>
-
                 <div class="row gy-5">
-
                     @foreach($blogs as $blog)
-
-
                         <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <a href="/{{Config::get('app.locale')}}/blog/{{$blog->slug}}">
                             <div class="post-box">
-                                <div class="post-img"><img src="storage/{{$blog->image}}" class="img-fluid" alt="">
-                                </div>
+                                <div class="post-img"><img src="storage/{{$blog->image}}" class="img-fluid" alt=""></div>
                                 <div class="meta">
                                     <span class="post-date">{{ \Carbon\Carbon::parse($blog->created_at)->format('j-F-Y') }}</span>
                                 </div>
                                 <h3 class="post-title">{{Config::get('app.locale')=='ar'?$blog->title_ar:$blog->title_en}}</h3>
                                 <p>{{Config::get('app.locale')=='ar'?$blog->brief_ar:$blog->brief_en}}</p>
-                                <a href="/{{Config::get('app.locale')}}/blogs/{{$blog->slug}}"
-                                   class="readmore stretched-link"><span>{{__('general.readMore')}}</span>
-                                    @if(Config::get('app.locale')=='ar')
-                                    <i class="bi bi-arrow-left"></i>
-                                @else
-                                        <i class="bi bi-arrow-right"></i>
-
-                                    @endif
-                                </a>
-
+                                <div class="readmore-wrapper ">
+                                    <div style="height:55px !important;" class="align-bottom d-table-cell">
+                                    <a href="/{{Config::get('app.locale')}}/blog/{{$blog->slug}}" class="readmore stretched-link">
+                                        <span>{{__('general.readMore')}}</span>
+                                        @if(Config::get('app.locale')=='ar')
+                                            <i class="bi bi-arrow-left"></i>
+                                        @else
+                                            <i class="bi bi-arrow-right"></i>
+                                        @endif
+                                    </a>
+                                    </div>
+                                </div>
                             </div>
+                            </a>
                         </div>
-
                     @endforeach
                 </div>
             </div>
         </section><!-- End Recent Blog Posts Section -->
+
     </main><!-- End #main -->
     @include('layouts.footer')
 
