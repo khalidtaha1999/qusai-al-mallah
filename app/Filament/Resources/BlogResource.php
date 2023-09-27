@@ -88,12 +88,12 @@ class BlogResource extends Resource
                     ]),
                 Grid::make(1)
                     ->schema([
-                        TinyEditor::make('content_ar')->label(__('general.contentAr'))->required(),
+                        TinyEditor::make('content_ar')->label(__('general.contentAr'))->required()->maxLength(10000)->minLength(200),
                     ]),
 
                 Grid::make(1)
                     ->schema([
-                        TinyEditor::make('content_en')->label(__('general.contentEn'))->required()
+                        TinyEditor::make('content_en')->label(__('general.contentEn'))->required()->maxLength(10000)->minLength(200)
                     ]),
             ]);
     }

@@ -14,7 +14,7 @@ class AboutUsController extends Controller
     {
 
         $aboutUs = AboutUs::select('image', 'content_' . Config::get('app.locale'))->first();
-        $ourTeams = OurTeam::select('image', 'position', 'name')->get();
+        $ourTeams = OurTeam::select('image', 'position', 'name_'.Config::get('app.locale'))->get();
         $whyChooseUs = WhyChooseUs::first();
 
 

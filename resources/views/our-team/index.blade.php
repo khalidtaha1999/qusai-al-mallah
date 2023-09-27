@@ -39,7 +39,7 @@
                                 <img src="{{asset('storage/'.$ourTeam->image)}}" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
-                                <h4>{{$ourTeam->name}}</h4>
+                                <h4>{{Config::get('app.locale')=='ar'?$ourTeam->name_ar:$ourTeam->name_en}}</h4>
                                 <span>{{$ourTeam->position}}</span>
                             </div>
                         </div>

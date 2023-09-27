@@ -114,20 +114,21 @@ return [
     'not_regex' => 'The :attribute field format is invalid.',
     'numeric' => 'The :attribute field must be a number.',
 
+//
+//    'password.letters' => 'The :attribute field must contain uppercase and lowercase letters, numbers, special symbols.',
+//    'password.mixed' => 'The :attribute field must contain uppercase and lowercase letters, numbers, special symbols.',
+//    'password.numbers' => 'The :attribute field must contain uppercase and lowercase letters, numbers, special symbols.',
+//    'password.symbols' => 'The :attribute field must contain uppercase and lowercase letters, numbers, special symbols.',
 
-    'password.letters' => 'The :attribute field must contain uppercase and lowercase letters, numbers, special symbols.',
-    'password.mixed' => 'The :attribute field must contain uppercase and lowercase letters, numbers, special symbols.',
-    'password.numbers' => 'The :attribute field must contain uppercase and lowercase letters, numbers, special symbols.',
-    'password.symbols' => 'The :attribute field must contain uppercase and lowercase letters, numbers, special symbols.',
 
+    'password' => [
+        'letters' => 'The :attribute field must contain at least one letter.',
+        'mixed' => 'The :attribute field must contain at least one uppercase and one lowercase letter.',
+        'numbers' => 'The :attribute field must contain at least one number.',
+        'symbols' => 'The :attribute field must contain at least one symbol.',
+        'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
+    ],
 
-//    'password' => [
-//        'letters' => 'The :attribute field must contain at least one letter.',
-//        'mixed' => 'The :attribute field must contain at least one uppercase and one lowercase letter.',
-//        'numbers' => 'The :attribute field must contain at least one number.',
-//        'symbols' => 'The :attribute field must contain at least one symbol.',
-//        'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
-//    ],
     'present' => 'The :attribute field must be present.',
     'prohibited' => 'The :attribute field is prohibited.',
     'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
