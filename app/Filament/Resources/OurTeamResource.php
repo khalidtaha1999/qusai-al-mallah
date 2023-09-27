@@ -49,8 +49,9 @@ class OurTeamResource extends Resource
                     ]),
                 Grid::make()
                     ->schema([
-                        TextInput::make('name')->label(__('general.name'))->required()->maxLength(255),
-                        TextInput::make('position')->label(__('general.position'))->nullable()->maxLength(255),
+                        TextInput::make('name_ar')->label(__('general.nameAr'))->required()->maxLength(255)->alpha(),
+                        TextInput::make('name_en')->label(__('general.nameEn'))->required()->maxLength(255)->alpha(),
+                        TextInput::make('position')->label(__('general.position'))->nullable()->maxLength(255)->alpha(),
                     ]),
 
             ]);
@@ -60,8 +61,11 @@ class OurTeamResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label(__('general.name'))
+                Tables\Columns\TextColumn::make('name_en')
+                    ->label(__('general.nameEn'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('name_ar')
+                    ->label(__('general.nameAr'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('position')
                     ->label(__('general.position'))

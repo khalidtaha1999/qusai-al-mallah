@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class EditUser extends EditRecord
 {
@@ -14,16 +15,16 @@ class EditUser extends EditRecord
 
     protected function getHeaderActions(): array
     {
-
-        if (Auth::user())
+        $routeParameters = Route::current()->parameters();
+        if (in_array(Auth::id(),$routeParameters))
         {
             return [];
         }
-
-
-        return [
-            Actions\DeleteAction::make(),
-        ];
-
+        if (Auth::user()->super==1) {
+            return [
+                Actions\DeleteAction::make(),
+            ];
+        }
+        return [];
     }
 }

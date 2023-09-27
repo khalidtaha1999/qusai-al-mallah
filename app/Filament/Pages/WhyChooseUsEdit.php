@@ -54,18 +54,17 @@ class WhyChooseUsEdit extends Page implements HasForms
                     ->getUploadedFileNameForStorageUsing(
                         fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
                             ->prepend(Carbon::now()->timestamp))->required(),
-
                 Section::make(__('general.slider') . ' 1')->schema([
-                    TinyEditor::make('sliders.slider1.content_ar')->label(__('general.contentAr'))->maxLength(2000),
-                    TinyEditor::make('sliders.slider1.content_en')->label(__('general.contentEn'))->maxLength(2000),
+                    TinyEditor::make('sliders.slider1.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(200)->required(),
+                    TinyEditor::make('sliders.slider1.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(200)->required(),
                 ]),
                 Section::make(__('general.slider') . ' 2')->schema([
-                    TinyEditor::make('sliders.slider2.content_ar')->label(__('general.contentAr'))->maxLength(2000),
-                    TinyEditor::make('sliders.slider2.content_en')->label(__('general.contentEn'))->maxLength(2000),
+                    TinyEditor::make('sliders.slider2.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(200)->required(),
+                    TinyEditor::make('sliders.slider2.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(200)->required(),
                 ]),
                 Section::make(__('general.slider') . ' 3')->schema([
-                    TinyEditor::make('sliders.slider3.content_ar')->label(__('general.contentAr'))->maxLength(2000),
-                    TinyEditor::make('sliders.slider3.content_en')->label(__('general.contentEn'))->maxLength(2000),
+                    TinyEditor::make('sliders.slider3.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(200)->required(),
+                    TinyEditor::make('sliders.slider3.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(200)->required(),
                 ]),
             ])
             ->statePath('data');
