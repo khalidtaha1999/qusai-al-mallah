@@ -2,14 +2,14 @@
 
     <div class="footer-content">
         <div class="container">
-            <div class="row gy-4">
-                <div class="col-lg-5 col-md-12 footer-info">
+            <div class="row justify-content-between">
+                <div class="col-lg-4 col-md-12 footer-info">
                     <a href="index.html" class="logo d-flex align-items-center">
                         <span>Nova</span>
                     </a>
                     <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
                         valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
-                    <div class="social-links d-flex  mt-3">
+                    <div class="social-links d-flex mt-3">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
@@ -17,36 +17,30 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-6 footer-links">
-                    <h4>{{__('general.usefulLinks')}}</h4>
-                    <ul>
-                        <li><i class="bi bi-dash"></i> <a
-                                href="/{{Config::get('app.locale')}}">{{__('general.home')}}</a></li>
-                        <li><i class="bi bi-dash"></i> <a
-                                href="/{{Config::get('app.locale')}}/about-us">{{__('general.aboutUs')}}</a></li>
-                        <li><i class="bi bi-dash"></i> <a
-                                href="/{{Config::get('app.locale')}}/services">{{__('general.services')}}</a></li>
-                        <li><i class="bi bi-dash"></i> <a
-                                href="/{{Config::get('app.locale')}}/our-team">{{__('general.ourTeam')}}</a></li>
-                        <li><i class="bi bi-dash"></i> <a
-                                href="/{{Config::get('app.locale')}}/blog">{{__('general.blog')}}</a></li>
-                    </ul>
-                </div>
-
-
                 @php
-                    $contact= \App\Models\AboutUs::select('email','location','phone')->first();
+                    $contact = \App\Models\AboutUs::select('email', 'location', 'phone')->first();
                 @endphp
-                <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                <div class="col-lg-4 col-md-12 footer-contact text-center ">
                     <h4>{{__('general.contactUs')}}</h4>
                     <p>
                         {{$contact->location}} <br>
                         <strong>{{__('general.phone')}}:</strong> {{$contact->phone}}<br>
                         <strong>{{__('general.email')}}:</strong> {{$contact->email}}<br>
                     </p>
-
                 </div>
 
+                @php
+                    $usefulLinks = \App\Models\UsefulLinks::select('link', 'title_' . Config::get('app.locale'))->get();
+                @endphp
+                <div class="col-lg-4 col-12 footer-links">
+                    <h4>{{__('general.usefulLinks')}}</h4>
+                    <ul class="grid-container">
+                        @foreach($usefulLinks as $link)
+                            <li><i class="bi bi-dash"></i> <a href="{{$link->link}}"
+                                                              target="_blank">{{Config::get('app.locale')=='ar' ?$link->title_ar:$link->title_en}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -42,7 +42,11 @@ return [
     'message'=>'الرسالة',
     'send'=>'ارسال',
     'usefulLinks'=>'روابط مفيدة',
-
-
-
+    'technicalSystems'=>'الأنظمة تقنية',
+    'alliances'=>'الحلفاء',
+    'ourCustomers'=>'عملائنا',
+    'projects'=>'المشاريع',
+    'projectDetails'=>'تفاصيل المشروع',
+    'blogDetails'=>'تفاصيل المدونة',
+    'search'=>'بحث',
 ];

@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OurTeamController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -29,6 +30,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('/blog',[BlogController::class,'index']);
     Route::get('/blog/{slug}',[BlogController::class,'show']);
     Route::get('/contact-us', ContactUsController::class);
+    Route::get('/projects/{slug}', [ProjectController::class,'show']);
+    Route::get('/projects', [ProjectController::class,'index']);
 });
 
 
