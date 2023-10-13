@@ -87,7 +87,16 @@
 
         </div>
     </section><!-- End Contact Section -->
-
+<div class="text-center">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.096639152231!2d35.862559999999995!3d32.550266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f6da0b6725e46d%3A0x3bec5cfa27d1c53b!2sQusai%20Al%20Mallah%20Consulting%20Office!5e0!3m2!1sen!2ssa!4v1696682899270!5m2!1sen!2ssa"        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
 </main><!-- End #main -->
     @include('layouts.footer')
 @endsection

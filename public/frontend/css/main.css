@@ -75,7 +75,7 @@ section {
 }
 
 .section-header h2 {
-    font-size: 32px;
+    font-size: 25px;
     font-weight: 600;
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -189,12 +189,74 @@ section {
     opacity: 1;
 }
 
-.service-image{
+.service-image {
     padding-left: 18PX;
     padding-bottom: 92px;
     aspect-ratio: 3/2;
     object-fit: contain;
     /*mix-blend-mode: color-burn;*/
+}
+
+.alliance-image {
+    padding-left: 18PX;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    /*mix-blend-mode: color-burn;*/
+}
+
+.alliance-title {
+    padding: 10px;
+}
+
+
+.technicalImage {
+    aspect-ratio: 5/2;
+    object-fit: contain;
+}
+
+@media only screen and (max-width: 1177px) {
+    /* Styles for screens up to 1177px wide */
+    .technicalImage {
+        aspect-ratio: 8/1;
+        object-fit: contain;
+    }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1023px) {
+    /* Styles for screens between 769px and 1032px wide */
+    .technicalImage {
+        aspect-ratio: 8/1;
+        object-fit: contain;
+    }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1024px) {
+    /* Styles for screens between 769px and 1032px wide */
+    .technicalImage {
+        aspect-ratio: 5/2;
+        object-fit: contain;
+    }
+}
+
+
+.column-border {
+    border-right: 1px solid #ccc; /* Add a vertical border between columns */
+    padding-right: 15px; /* Adjust the spacing as needed */
+}
+
+/* Remove the border from the last column to avoid a double border */
+.column-border:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+@media (max-width: 767px) {
+    .border-bottom-small {
+        border-right: none; /* Remove the right border for small screens */
+        border-bottom: 1px solid #ccc; /* Add a bottom border for small screens */
+        padding-right: 0; /* Remove padding for small screens */
+        padding-bottom: 15px; /* Adjust the spacing as needed for small screens */
+    }
 }
 
 
@@ -352,7 +414,6 @@ section {
     .navbar .dropdown ul a i {
         font-size: 12px;
     }
-
 
 
     .navbar .dropdown ul a:hover,
@@ -515,7 +576,6 @@ section {
 }
 
 
-
 @media only screen and (max-width: 1177px) {
     /* Styles for screens up to 1177px wide */
     .hero {
@@ -523,6 +583,7 @@ section {
         background-size: contain;
         height: 40vh; /* You can leave or modify this as needed */
     }
+}
 
 @media only screen and (min-width: 767px) and (max-width: 1023px) {
     /* Styles for screens between 769px and 1032px wide */
@@ -532,14 +593,14 @@ section {
         height: 50vh; /* You can leave or modify this as needed */
     }
 }
-    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+
+@media only screen and (min-width: 767px) and (max-width: 1024px) {
     /* Styles for screens between 769px and 1032px wide */
     .hero {
         background: url("../img/background.jpg") no-repeat;
         background-size: contain;
         height: 135vh; /* You can leave or modify this as needed */
     }
-}
 }
 
 
@@ -959,7 +1020,6 @@ section {
 }
 
 
-
 .recent-posts .post-box .meta {
     margin-top: 15px;
 }
@@ -995,7 +1055,8 @@ section {
     bottom: 0;
     left: 0;
     width: 100%;
-    text-align: center; /
+    text-align: center;
+/
 }
 
 .recent-posts .post-box .readmore i {
@@ -2097,6 +2158,86 @@ section {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
+
+.brands {
+    width: 100%;
+    padding-top: 90px;
+    padding-bottom: 90px
+}
+
+#customersImage {
+    aspect-ratio: 3/4;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+}
+
+.brands_slider_container {
+    height: 173px;
+    border: solid 1px #e8e8e8;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    padding-left: 97px;
+    padding-right: 97px;
+    background: #fff;
+}
+
+.brands_slider {
+    height: 100%;
+    margin-top: 50px
+}
+
+.brands_item {
+    height: 100%;
+    width: 100%;
+}
+
+.brands_item img {
+    max-width: 100%
+}
+
+.brands_nav {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 5px;
+    cursor: pointer
+}
+
+.brands_nav i {
+    color: #e5e5e5;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease
+}
+
+.brands_nav:hover i {
+    color: #676767
+}
+
+.brands_prev {
+    left: 40px
+}
+
+.brands_next {
+    right: 40px
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-flow: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
 .footer {
     font-size: 14px;
 }
@@ -2190,7 +2331,7 @@ section {
 }
 
 .footer .footer-content .footer-links ul li:first-child {
-    padding-top: 0;
+    padding-top: 12PX;
 }
 
 .footer .footer-content .footer-links ul a {
@@ -2225,3 +2366,63 @@ section {
     font-size: 13px;
     color: var(--color-secondary);
 }
+
+.owl-carousel .item {
+    margin: 10px; /* Set your desired fixed margin here */
+}
+
+.owl-carousel .item img {
+    width: 100%; /* Ensure the image width is 100% of its container */
+    height: 75px; /* Set your desired fixed height */
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+}
+
+.owl-carousel-project .item {
+    margin: 10px; /* Set your desired fixed margin here */
+}
+
+.owl-carousel .item img {
+    width: 100%; /* Ensure the image width is 100% of its container */
+    height: 75px; /* Set your desired fixed height */
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+}
+
+.image-opacity {
+    opacity: 0.5; /* You can adjust the opacity level as per your preference (0.0 to 1.0) */
+    transition: opacity 0.3s; /* Add a smooth transition effect */
+}
+
+.image-opacity:hover {
+    opacity: 1; /* Restore full opacity on hover */
+}
+
+.project-image-index img {
+    padding: 30px;
+    height: 200px; /* Adjust the height as needed */
+    object-fit: contain;
+}
+
+.project-container {
+    margin-top: 70px;
+}
+
+
+.project-card-body {
+    padding: 50px;
+    height: 405px; /* Adjust the height as needed */
+    display: flex;
+    flex-direction: column;
+}
+
+.blog_image{
+    object-fit: contain;
+
+}
+.blog_image img{
+    height: 200px; /* Adjust the height as needed */
+    object-fit: contain;
+}
+
+

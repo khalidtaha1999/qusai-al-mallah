@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\Alliance;
 use App\Models\Blog;
+use App\Models\OurCustomers;
+use App\Models\Project;
 use App\Models\Service;
+use App\Models\TechnicalSystem;
 use App\Models\WhyChooseUs;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -23,8 +27,20 @@ class HomeController extends Controller
         $services = Service::select('image', 'title_' . Config::get('app.locale'), 'content_' . Config::get('app.locale'))->limit(6)->get();
         $blogs = Blog::select('id', 'slug', 'image', 'title_' . Config::get('app.locale'), 'brief_' . Config::get('app.locale'), 'created_at')->limit(4)->get();
         $whyChooseUs = WhyChooseUs::first();
+        $ourCustomers = OurCustomers::select('image')->get();
+        $alliances = Alliance::get();
+        $technicalSystems = TechnicalSystem::get();
+        $projects = Project::select( 'slug', 'image', 'title_' . Config::get('app.locale'))->limit(10)->get();
 
-
-        return view('home')->with(['aboutUs' => $aboutUs, 'services' => $services, 'blogs' => $blogs,'whyChooseUs'=>$whyChooseUs]);
+        return view('home')->with([
+            'aboutUs' => $aboutUs,
+            'services' => $services,
+            'blogs' => $blogs,
+            'whyChooseUs' => $whyChooseUs,
+            'ourCustomers' => $ourCustomers,
+            'alliances' => $alliances,
+            'technicalSystems' => $technicalSystems,
+            'projects'=>$projects
+        ]);
     }
 }

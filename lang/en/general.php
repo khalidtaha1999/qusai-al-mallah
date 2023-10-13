@@ -40,6 +40,14 @@ return [
     'subject'=>'Subject',
     'send'=>'Send',
     'usefulLinks'=>'Useful Links',
+    'technicalSystems'=>'Technical Systems',
+    'alliances'=>'Alliances',
+    'ourCustomers'=>' Our Customers',
+    'projects'=>'Projects',
+    'projectDetails'=>'Project Details',
+    'search'=>'Search',
+
+    'blogDetails'=>'blogDetails',
 
 
 ];

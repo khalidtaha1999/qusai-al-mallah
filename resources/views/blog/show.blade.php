@@ -18,10 +18,10 @@
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/blog-header.jpg');">
         <div class="container position-relative d-flex flex-column align-items-center">
 
-            <h2>Blog Details</h2>
+            <h2>{{__('general.blogDetails')}}</h2>
             <ol>
-                <li><a href="index.html">Home</a></li>
-                <li>Blog Details</li>
+                <li><a href="/{{Config::get('app.locale')}}/">{{__('general.home')}}</a></li>
+                <li>{{__('general.blogDetails')}}</li>
             </ol>
 
         </div>
