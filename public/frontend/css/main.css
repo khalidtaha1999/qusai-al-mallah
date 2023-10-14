@@ -156,6 +156,38 @@ section {
     content: "/";
 }
 
+.team-image {
+    width: 200px; /* Set your desired width here */
+    height: 200px; /* Set your desired height here */
+    object-fit: cover; /* This ensures the image maintains its aspect ratio while filling the specified dimensions */
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center the text within the container */
+}
+
+/* Custom styles */
+.pdf-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 300px; /* Adjust the height as needed */
+}
+
+.pdf-card .card-footer {
+    background-color: #f8f9fa; /* Gray background color for the footer */
+    border-top: 1px solid #ddd; /* Optional border at the top of the footer */
+}
+
+.pdf-card .card-footer a {
+    display: inline-flex;
+    align-items: center;
+}
+
 /*--------------------------------------------------------------
 # Scroll top button
 --------------------------------------------------------------*/
@@ -210,7 +242,8 @@ section {
 
 
 .technicalImage {
-    aspect-ratio: 5/2;
+    height: 50px;
+    width: 100px;
     object-fit: contain;
 }
 
@@ -250,12 +283,40 @@ section {
     padding-right: 0;
 }
 
+.column-border_ar {
+    border-left: 1px solid #ccc; /* Add a vertical border between columns */
+    padding-left: 15px; /* Adjust the spacing as needed */
+}
+
+/* Remove the border from the last column to avoid a double border */
+.column-border_ar:last-child {
+    border-left: none;
+    padding-left: 0;
+}
+
 @media (max-width: 767px) {
     .border-bottom-small {
         border-right: none; /* Remove the right border for small screens */
         border-bottom: 1px solid #ccc; /* Add a bottom border for small screens */
         padding-right: 0; /* Remove padding for small screens */
         padding-bottom: 15px; /* Adjust the spacing as needed for small screens */
+    }
+    .border-bottom-small_ar:last-child {
+          border-bottom: 0;
+
+      }
+
+    .border-bottom-small_ar {
+        border-left: none; /* Remove the right border for small screens */
+        border-bottom: 1px solid #ccc; /* Add a bottom border for small screens */
+        padding-left: 0; /* Remove padding for small screens */
+        padding-bottom: 15px; /* Adjust the spacing as needed for small screens */
+    }
+
+
+
+    .border-bottom-small:last-child {
+        border-bottom: 0;
     }
 }
 
@@ -325,7 +386,7 @@ section {
 }
 
 .header .logo img {
-    max-height: 40px;
+    max-height: 58px;
     margin-right: 6px;
 }
 
@@ -1014,11 +1075,13 @@ section {
 .recent-posts .post-box .post-img img {
     transition: 0.5s;
     width: 200px; /* Set the width to your desired size */
-    height: auto; /* Set the height to your desired size */
-    object-fit: cover; /* This ensures the image covers the specified dimensions */
-    border-radius: 20px;
+    height: 200px; /* Set the height to your desired size */
+    object-fit: contain; /* This ensures the image covers the specified dimensions */
 }
 
+.custom-button:hover {
+    background-color: #0056b3; /* Change this color to your desired hover effect color */
+}
 
 .recent-posts .post-box .meta {
     margin-top: 15px;
@@ -2252,14 +2315,16 @@ section {
     margin-bottom: 30px;
 }
 
-.footer .footer-content .footer-info .logo {
-    line-height: 0;
-    margin-bottom: 25px;
-}
+/*.footer .footer-content .footer-info .logo {*/
+/*    line-height: 0;*/
+/*    margin-bottom: 25px;*/
+/*}*/
 
 .footer .footer-content .footer-info .logo img {
-    max-height: 40px;
-    margin-right: 6px;
+    width: 200px;
+    height: 144px;
+    object-fit: cover;
+    margin-top: -42px;
 }
 
 .footer .footer-content .footer-info .logo span {
@@ -2326,7 +2391,6 @@ section {
 
 .footer .footer-content .footer-links ul li {
     padding: 10px 0;
-    display: flex;
     align-items: center;
 }
 
@@ -2416,11 +2480,12 @@ section {
     flex-direction: column;
 }
 
-.blog_image{
+.blog_image {
     object-fit: contain;
 
 }
-.blog_image img{
+
+.blog_image img {
     height: 200px; /* Adjust the height as needed */
     object-fit: contain;
 }

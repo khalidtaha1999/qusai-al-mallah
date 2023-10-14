@@ -3,8 +3,7 @@
 
         <a href="/{{Config::get('app.locale')}}" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1 class="d-flex align-items-center">Nova</h1>
+             <img src="{{asset('frontend/img/header_logo.png')}}"   alt="">
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -17,7 +16,7 @@
                 <li><a href="/{{Config::get('app.locale')}}/services">{{__('general.services')}}</a></li>
                 <li><a href="/{{Config::get('app.locale')}}/our-team">{{__('general.ourTeam')}}</a></li>
                 <li><a href="/{{Config::get('app.locale')}}/blog">{{__('general.blog')}}</a></li>
-
+                <li><a href="/{{Config::get('app.locale')}}/knowledge-center">{{__('general.knowledgeCenter')}}</a></li>
                 <li><a href="/{{Config::get('app.locale')}}/contact-us">{{__('general.contactUs')}}</a></li>
 
                 @if(Config::get('app.locale')=='en')

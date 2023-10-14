@@ -118,9 +118,9 @@
                         <div class="card-body">
                             <div class="row">
                                 @foreach($technical->images as $image)
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-4 mb-3 ">
                                         <img src="{{'storage/'.$image}}"
-                                             class="card-img-top technicalImage rounded img-fluid" alt="Image 1">
+                                             class=" card-img-top technicalImage rounded img-fluid" alt="Image 1">
                                     </div>
                                 @endforeach
                                 <!-- Add more columns as needed -->
@@ -159,7 +159,7 @@
         </section><!-- End Our Services Section -->
 
 
-        <div class="container" style="direction: ltr">
+        <div class="container mb-4" style="direction: ltr">
             <div class="row">
                 <div class="col-12">
                     <div class="section-header">
@@ -167,7 +167,8 @@
                     </div>
                     <div class="owl-carousel owl-theme" id="project">
                         @foreach($projects as $project)
-                            <a style="text-decoration: none; color: black" href="/{{Config::get('app.locale')}}/projects/{{$project->slug}}">
+                            <a style="text-decoration: none; color: black"
+                               href="/{{Config::get('app.locale')}}/projects/{{$project->slug}}">
                                 <div class="item image-opacity" id="projectImages">
                                     <img src="storage/{{$project->image}}" alt="Logo 1">
                                     <br>
@@ -179,6 +180,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="text-center mt-4 "><a href="{{Config::get('app.locale').'/projects'}}"
+                                          class="btn btn-outline-primary "
+                                          style="text-decoration:none">{{__('general.showAllProjects')}}</a></div>
 
         <!-- ======= Recent Blog Posts Section ======= -->
         <section id="recent-posts" class="recent-posts">

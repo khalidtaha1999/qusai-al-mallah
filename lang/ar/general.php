@@ -45,8 +45,14 @@ return [
     'technicalSystems'=>'الأنظمة تقنية',
     'alliances'=>'الحلفاء',
     'ourCustomers'=>'عملائنا',
-    'projects'=>'المشاريع',
+    'projects'=>'مشاريعنا',
     'projectDetails'=>'تفاصيل المشروع',
     'blogDetails'=>'تفاصيل المدونة',
     'search'=>'بحث',
+    'knowledgeCenter'=>'مركز المعرفة',
+    'showAllProjects'=>'عرض كل المشاريع',
+    'category'=>'الفئة',
+    'categories'=>'الفئات',
+    'files'=>'الملفات',
+
 ];
