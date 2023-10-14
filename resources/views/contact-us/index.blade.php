@@ -6,9 +6,7 @@
 
     @include('layouts.header')
 
-
 <main id="main">
-
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{asset('frontend/img/contact-header.jpg')}});">
         <div class="container position-relative d-flex flex-column align-items-center">
@@ -16,12 +14,11 @@
             <h2>{{__('general.contactUs')}}</h2>
             <ol>
                 <li><a href="/{{Config::get('app.locale')}}/">{{__('general.home')}}</a></li>
-                <li>{{__('general.contactUs')}}</li>
+                <li>{{' '}} {{__('general.contactUs')}}</li>
             </ol>
 
         </div>
     </div><!-- End Breadcrumbs -->
-
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
         <div class="container position-relative" data-aos="fade-up">

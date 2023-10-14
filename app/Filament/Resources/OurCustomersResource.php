@@ -21,7 +21,17 @@ class OurCustomersResource extends Resource
 {
     protected static ?string $model = OurCustomers::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('general.ourCustomers');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('general.ourCustomers');
+    }
 
     public static function form(Form $form): Form
     {
@@ -43,7 +53,7 @@ class OurCustomersResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')->label(__('general.image')),
             ])
             ->filters([
                 //

@@ -24,7 +24,17 @@ class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-command-line';
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('general.projects');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('general.projects');
+    }
 
     public static function form(Form $form): Form
     {
@@ -32,7 +42,7 @@ class ProjectResource extends Resource
             ->schema([
                 Grid::make(1)
                     ->schema([
-                        FileUpload::make('image')->label(__('general.image'))->image()
+                        FileUpload::make('image')->label(__('general.image'))->image()->label(__('general.image'))
                             ->directory('projects')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
@@ -43,9 +53,9 @@ class ProjectResource extends Resource
                     ]),
                 Grid::make()
                     ->schema([
-                        Forms\Components\Textarea::make('title_en')->label(__('general.titleEn'))->required()->maxLength(255),
+                        Forms\Components\Textarea::make('title_en')->label(__('general.titleEn'))->required()->maxLength(255)->label(__('general.titleEn')),
 
-                        Forms\Components\Textarea::make('title_ar')->label(__('general.titleAr'))->required()->maxLength(255),
+                        Forms\Components\Textarea::make('title_ar')->label(__('general.titleAr'))->required()->maxLength(255)->label(__('general.titleAr')),
 
                     ]),
 
@@ -77,21 +87,20 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('title_ar')->label(__('general.titleAr'))->wrap()
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('slug')
+                Tables\Columns\TextColumn::make('title_en')->label(__('general.titleEn'))->wrap()
                     ->searchable(),
-                Tables\Columns\IconColumn::make('status')
+                Tables\Columns\ImageColumn::make('image')->label(__('general.image')),
+                Tables\Columns\TextColumn::make('slug')->label(__('general.slug'))
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('status')->label(__('general.status'))
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('created_at')->label(__('general.createdAt'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //

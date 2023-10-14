@@ -5,13 +5,13 @@
     @include('layouts.header')
 
     <div class=" breadcrumbs d-flex align-items-center"
-         style="background-image: url({{asset('frontend/img/blog-header.jpg')}});">
+         style="background-image: url({{asset('frontend/img/KnowledgeCenter.png')}});">
         <div class="container position-relative d-flex flex-column align-items-center">
 
-            <h2>{{__('general.projects')}}</h2>
+            <h2>{{__('general.knowledgeCenter')}}</h2>
             <ol>
                 <li><a href="/{{Config::get('app.locale')}}/">{{__('general.home')}}</a></li>
-                <li>{{' '}} {{__('general.projects')}}</li>
+                <li>{{' '}} {{__('general.knowledgeCenter')}}</li>
             </ol>
 
         </div>
@@ -19,13 +19,15 @@
 
     <div class="container project-container">
         <div class="row">
-            @foreach($projects as $project)
+            @foreach($knowledgeCenters as $knowledgeCenter)
                 <div class="col-sm-4 rounded-top mt-4 mb-4">
                     <div class="card project-image-index shadow-lg ">
-                        <a style="text-decoration: none; color: black" href="/projects/{{$project->slug}}">
+                        <a style="text-decoration: none; color: black"
+                           href="/knowledge-center/{{$knowledgeCenter->id}}">
                             <div class="card-body project-card-body text-center">
-                                <img src="{{asset('storage/'.$project->image)}}" class="card-img-top" alt="Image 1">
-                                <h5 class="card-title">{{$project->title_en}}</h5>
+                                <img src="{{asset('storage/'.$knowledgeCenter->image)}}" class="card-img-top"
+                                     alt="Image 1">
+                                <h5 class="card-title">{{$knowledgeCenter->title_en}}</h5>
                             </div>
                         </a>
 
@@ -37,7 +39,7 @@
 
     <div class="blog-pagination text-center mb-4">
 
-        {{$projects->links()}}
+        {{$knowledgeCenters->links()}}
 
     </div><!-- End blog pagination -->
 

@@ -14,7 +14,7 @@
                 <h2>{{__('general.aboutUs')}}</h2>
                 <ol>
                     <li><a href="/{{Config::get('app.locale')}}">{{__('general.home')}}</a></li>
-                    <li>{{__('general.aboutUs')}}</li>
+                    <li>{{' '}} {{__('general.aboutUs')}}</li>
                 </ol>
 
             </div>
@@ -89,17 +89,17 @@
                 <div class="row gy-4">
 
                     @foreach($ourTeams as $ourTeam)
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="team-member">
-                            <div class="member-img">
-                                <img src="{{asset('storage/'.$ourTeam->image)}}" class="img-fluid" alt="">
-                            </div>
-                            <div class="member-info">
-                                <h4>{{Config::get('app.locale')=='ar'?$ourTeam->name_ar:$ourTeam->name_en}}</h4>
-                                <span>{{$ourTeam->position}}</span>
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="team-member">
+                                <div class="member-img">
+                                    <img src="{{ asset('storage/' . $ourTeam->image) }}" class="img-fluid team-image" alt="">
+                                </div>
+                                <div class="member-info">
+                                    <h4>{{ Config::get('app.locale') == 'ar' ? $ourTeam->name_ar : $ourTeam->name_en }}</h4>
+                                    <span>{{ $ourTeam->position }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div><!-- End Team Member -->
                     @endforeach
 
 

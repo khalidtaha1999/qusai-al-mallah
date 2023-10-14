@@ -85,8 +85,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
 <!-- Vendor JS Files -->
-<script src="{{asset("frontend/vendor/bootstrap/js/bofrontendotstrap.bundle.min.js")}}"></script>
-<script src="{{asset("frontend/vendor/aos/aos.js")}}"></script>
+ <script src="{{asset("frontend/vendor/aos/aos.js")}}"></script>
 <script src="{{asset("frontend/vendor/glightbox/js/glightbox.min.js")}}"></script>
 <script src="{{asset("frontend/vendor/swiper/swiper-bundle.min.js")}}"></script>
 <script src="{{asset("frontend/vendor/isotope-layout/isotope.pkgd.min.js")}}"></script>

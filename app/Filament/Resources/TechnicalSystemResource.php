@@ -21,7 +21,18 @@ class TechnicalSystemResource extends Resource
 {
     protected static ?string $model = TechnicalSystem::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calculator';
+
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('general.technicalSystems');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('general.technicalSystems');
+    }
 
     public static function form(Form $form): Form
     {
@@ -38,9 +49,11 @@ class TechnicalSystemResource extends Resource
                                     ->prepend(Carbon::now()->timestamp))->required(),
                     ]),
                 Forms\Components\TextInput::make('title_ar')
+                    ->label(__('general.titleAr'))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('title_en')
+                    ->label(__('general.titleEn'))
                     ->required()
                     ->maxLength(255),
             ]);
@@ -51,14 +64,13 @@ class TechnicalSystemResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title_ar')
+                    ->label(__('general.titleAr'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('title_en')
+                    ->label(__('general.titleEn'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('general.createdAt'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

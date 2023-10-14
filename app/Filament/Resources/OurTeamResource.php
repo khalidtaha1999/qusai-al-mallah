@@ -49,9 +49,9 @@ class OurTeamResource extends Resource
                     ]),
                 Grid::make()
                     ->schema([
-                        TextInput::make('name_ar')->label(__('general.nameAr'))->required()->maxLength(255)->alpha(),
-                        TextInput::make('name_en')->label(__('general.nameEn'))->required()->maxLength(255)->alpha(),
-                        TextInput::make('position')->label(__('general.position'))->nullable()->maxLength(255)->alpha(),
+                        TextInput::make('name_ar')->label(__('general.nameAr'))->required()->maxLength(100),
+                        TextInput::make('name_en')->label(__('general.nameEn'))->required()->maxLength(100),
+                        TextInput::make('position')->label(__('general.position'))->nullable()->maxLength(100),
                     ]),
 
             ]);

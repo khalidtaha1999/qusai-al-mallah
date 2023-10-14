@@ -12,7 +12,7 @@
                 <h2>{{__('general.projectDetails')}}</h2>
                 <ol>
                     <li><a href="/{{Config::get('app.locale')}}/">{{__('general.home')}}</a></li>
-                    <li>{{__('general.projectDetails')}}</li>
+                    <li>{{' '}} {{__('general.projectDetails')}}</li>
                 </ol>
 
             </div>

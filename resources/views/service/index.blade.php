@@ -13,10 +13,10 @@
              style="background-image: url({{asset('frontend/img/services-header.jpg')}}">
             <div class="container position-relative d-flex flex-column align-items-center">
 
-                <h2>Services</h2>
+                <h2>{{__('general.ourServices')}}</h2>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
-                    <li>Services</li>
+                    <li><a href="/{{Config::get('app.locale')}}/">{{__('general.home')}}</a></li>
+                    <li>{{' '}}{{__('general.ourServices')}}</li>
                 </ol>
 
             </div>
@@ -47,6 +47,12 @@
                     @endforeach
                 </div>
             </div>
+
+            <div class="blog-pagination text-center">
+
+                {{$services->links()}}
+
+            </div><!-- End blog pagination -->
         </section><!-- End Our Services Section -->
     </main><!-- End #main -->
 

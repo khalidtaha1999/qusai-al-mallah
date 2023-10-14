@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AllianceResource\Pages;
-use App\Filament\Resources\AllianceResource\RelationManagers;
-use App\Models\Alliance;
+use App\Filament\Resources\FileResource\Pages;
+use App\Filament\Resources\FileResource\RelationManagers;
+use App\Models\File;
 use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -15,23 +15,24 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Config;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
-class AllianceResource extends Resource
+class FileResource extends Resource
 {
-    protected static ?string $model = Alliance::class;
+    protected static ?string $model = File::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
 
     public static function getPluralLabel(): ?string
     {
-        return __('general.alliances');
+        return __('general.files');
     }
 
     public static function getLabel(): ?string
     {
-        return __('general.alliances');
+        return __('general.files');
     }
 
     public static function form(Form $form): Form
@@ -40,20 +41,25 @@ class AllianceResource extends Resource
             ->schema([
                 Grid::make(1)
                     ->schema([
-                        FileUpload::make('image')->label(__('general.image'))->image()
-                            ->directory('alliance')
+                        FileUpload::make('file')->label(__('general.image'))->image()
+                            ->directory('file')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
-                                    ->prepend(Carbon::now()->timestamp))->required(),
+                                    ->prepend(Carbon::now()->timestamp))->required()->maxSize(700)->acceptedFileTypes(['application/pdf'])
+                            ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\FileUpload $component) {
+                                $livewire->validateOnly($component->getStatePath());
+                            }),
                     ]),
-                Forms\Components\TextInput::make('title_ar')
-                    ->label(__('general.titleAr'))
-                    ->required()
-                    ->maxLength(255),
+
+                Forms\Components\Select::make('folder_id')
+                    ->relationship('folder', 'title_' . Config::get('app.locale')),
+
                 Forms\Components\TextInput::make('title_en')
-                    ->label(__('general.titleEn'))
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(100),
+                Forms\Components\TextInput::make('title_ar')
+                    ->required()
+                    ->maxLength(100),
             ]);
     }
 
@@ -61,17 +67,22 @@ class AllianceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title_ar')
-                    ->label(__('general.titleAr'))
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('folder.title_' . Config::get('app.locale'))
+                    ->label(__('general.category'))
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('title_en')
                     ->label(__('general.titleEn'))
+                    ->wrap()
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image')->label(__('general.image')),
+                Tables\Columns\TextColumn::make('title_ar')
+                    ->label(__('general.titleAr'))
+                    ->wrap()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('general.createdAt'))
                     ->dateTime()
                     ->sortable()
-                    ->label(__('general.createdAt'))
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
@@ -97,9 +108,9 @@ class AllianceResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAlliances::route('/'),
-            'create' => Pages\CreateAlliance::route('/create'),
-            'edit' => Pages\EditAlliance::route('/{record}/edit'),
+            'index' => Pages\ListFiles::route('/'),
+            'create' => Pages\CreateFile::route('/create'),
+            'edit' => Pages\EditFile::route('/{record}/edit'),
         ];
     }
 }
