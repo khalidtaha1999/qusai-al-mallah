@@ -8,6 +8,7 @@ use App\Models\Folder;
 use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -37,14 +38,18 @@ class FolderResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('image')->label(__('general.image'))->image()
-                    ->directory('category')
-                    ->getUploadedFileNameForStorageUsing(
-                        fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
-                            ->prepend(Carbon::now()->timestamp))->required()->maxSize(700)->image()
-                    ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\FileUpload $component) {
-                        $livewire->validateOnly($component->getStatePath());
-                    }),
+
+                Grid::make(1)
+                    ->schema([
+                        FileUpload::make('image')->label(__('general.image'))->image()
+                            ->directory('category')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
+                                    ->prepend(Carbon::now()->timestamp))->required()->maxSize(700)->image()
+                            ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\FileUpload $component) {
+                                $livewire->validateOnly($component->getStatePath());
+                            }),
+                    ]),
                 Forms\Components\TextInput::make('title_en')
                     ->label(__('general.titleEn'))
                     ->required()

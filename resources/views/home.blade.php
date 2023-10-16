@@ -116,9 +116,9 @@
                     <div>
                         <h5 class="card-title text-center mb-4">{{Config::get('app.locale')=='ar'?$technical->title_ar:$technical->title_en}}</h5>
                         <div class="card-body">
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 @foreach($technical->images as $image)
-                                    <div class="col-md-4 mb-3 ">
+                                    <div class="col-md-4 mb-3  ">
                                         <img src="{{'storage/'.$image}}"
                                              class=" card-img-top technicalImage rounded img-fluid" alt="Image 1">
                                     </div>
@@ -138,7 +138,7 @@
                 <div class="section-header">
                     <h2 class="mb-5">{{__('general.alliances')}}</h2>
                 </div>
-                <div class="row gy-5">
+                <div class="row gy-5 ">
                     @foreach($alliances as $key => $alliance)
                         @if($key % 3 == 0)
                 </div> <!-- Close the previous row -->
@@ -191,7 +191,7 @@
                 <div class="section-header">
                     <h2>{{__('general.recentBlogPosts')}}</h2>
                 </div>
-                <div class="row gy-5">
+                <div class="row gy-5 justify-content-center">
                     @foreach($blogs as $blog)
                         <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                             <a href="/{{Config::get('app.locale')}}/blog/{{$blog->slug}}">

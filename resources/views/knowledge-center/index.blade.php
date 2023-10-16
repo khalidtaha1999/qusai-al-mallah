@@ -17,20 +17,20 @@
         </div>
     </div><!-- End Breadcrumbs -->
 
-    <div class="container project-container">
-        <div class="row">
+    <div class="container project-container ">
+        <div class="row justify-content-center">
+
             @foreach($knowledgeCenters as $knowledgeCenter)
-                <div class="col-sm-4 rounded-top mt-4 mb-4">
+                <div class="col-sm-4 rounded-top mt-4 mb-4 ">
                     <div class="card project-image-index shadow-lg ">
                         <a style="text-decoration: none; color: black"
                            href="/knowledge-center/{{$knowledgeCenter->id}}">
                             <div class="card-body project-card-body text-center">
                                 <img src="{{asset('storage/'.$knowledgeCenter->image)}}" class="card-img-top"
                                      alt="Image 1">
-                                <h5 class="card-title">{{$knowledgeCenter->title_en}}</h5>
+                                <h5 class="card-title">{{Config::get('app.locale')=='ar'?$knowledgeCenter->title_ar:$knowledgeCenter->title_en}}</h5>
                             </div>
                         </a>
-
                     </div>
                 </div>
             @endforeach

@@ -42,8 +42,8 @@ return [
     'message'=>'الرسالة',
     'send'=>'ارسال',
     'usefulLinks'=>'روابط مفيدة',
-    'technicalSystems'=>'الأنظمة تقنية',
-    'alliances'=>'الحلفاء',
+    'technicalSystems'=>'الأنظمة التقنية',
+    'alliances'=>'حلفائنا',
     'ourCustomers'=>'عملائنا',
     'projects'=>'مشاريعنا',
     'projectDetails'=>'تفاصيل المشروع',
@@ -54,5 +54,7 @@ return [
     'category'=>'الفئة',
     'categories'=>'الفئات',
     'files'=>'الملفات',
+    'link'=>'الرابط',
+    'file'=>'الملف',
 
 ];

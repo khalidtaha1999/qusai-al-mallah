@@ -18,12 +18,11 @@
                 <li><a href="/{{Config::get('app.locale')}}/blog">{{__('general.blog')}}</a></li>
                 <li><a href="/{{Config::get('app.locale')}}/knowledge-center">{{__('general.knowledgeCenter')}}</a></li>
                 <li><a href="/{{Config::get('app.locale')}}/contact-us">{{__('general.contactUs')}}</a></li>
-
-                @if(Config::get('app.locale')=='en')
-                    <li><a href="{{LaravelLocalization::getLocalizedURL('ar')}}">Ar</a></li>
-                @else
-                    <li><a href="{{LaravelLocalization::getLocalizedURL('en')}}">En</a></li>
-                @endif
+                <li>
+                    <a href="{{Config::get('app.locale')=='en'?LaravelLocalization::getLocalizedURL('ar'):LaravelLocalization::getLocalizedURL('en')}}">
+                        <i class="fa-solid fa-globe fa-2xl" style=" color: #f4f5f6;font-size: 18px"></i>
+                    </a>
+                </li>
             </ul>
         </nav><!-- .navbar -->
 

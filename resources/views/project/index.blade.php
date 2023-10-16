@@ -25,7 +25,7 @@
                         <a style="text-decoration: none; color: black" href="/projects/{{$project->slug}}">
                             <div class="card-body project-card-body text-center">
                                 <img src="{{asset('storage/'.$project->image)}}" class="card-img-top" alt="Image 1">
-                                <h5 class="card-title">{{$project->title_en}}</h5>
+                                <h5 class="card-title">{{Config::get('app.locale')=='ar'?$project->title_ar:$project->title_en}}</h5>
                             </div>
                         </a>
 
