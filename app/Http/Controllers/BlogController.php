@@ -11,11 +11,11 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         // Create the initial query builder without applying pagination yet
-        $query = Blog::select('slug', 'image', 'title_' . Config::get('app.locale'), 'brief_' . Config::get('app.locale'), 'created_at');
+        $query = Blog::select('slug', 'image', 'title_' . Config::get('app.locale'), 'brief_' . Config::get('app.locale'), 'created_at')->where('status', 1);
 
         // Apply search filter if the title is provided
         if (!empty($request->title)) {
-            $query->where('title_'.Config::get('app.locale'), 'LIKE', '%' . $request->title . '%');
+            $query->where('title_' . Config::get('app.locale'), 'LIKE', '%' . $request->title . '%');
         }
 
         // Paginate the results
@@ -32,10 +32,10 @@ class BlogController extends Controller
 
     public function show($slug)
     {
-        $blog=Blog::where('slug',$slug)->first();
-        if (!$blog){
+        $blog = Blog::where('slug', $slug)->first();
+        if (!$blog) {
             abort(404);
         }
-        return view('blog.show')->with(['blog'=>$blog]);
+        return view('blog.show')->with(['blog' => $blog]);
     }
 }
