@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::select('slug', 'image', 'title_' . Config::get('app.locale'))->simplePaginate(10);
+        $projects = Project::select('slug', 'image', 'title_' . Config::get('app.locale'))->where('status', 1)->simplePaginate(10);
 
         return view('project.index')->with(['projects' => $projects]);
     }

@@ -25,12 +25,12 @@ class HomeController extends Controller
     {
         $aboutUs = AboutUs::select('image', 'content_' . Config::get('app.locale'))->first();
         $services = Service::select('image', 'title_' . Config::get('app.locale'), 'content_' . Config::get('app.locale'))->limit(6)->get();
-        $blogs = Blog::select('id', 'slug', 'image', 'title_' . Config::get('app.locale'), 'brief_' . Config::get('app.locale'), 'created_at')->limit(4)->get();
+        $blogs = Blog::select('id', 'slug', 'image', 'title_' . Config::get('app.locale'), 'brief_' . Config::get('app.locale'), 'created_at')->where('status', 1)->limit(4)->get();
         $whyChooseUs = WhyChooseUs::first();
         $ourCustomers = OurCustomers::select('image')->get();
         $alliances = Alliance::get();
         $technicalSystems = TechnicalSystem::get();
-        $projects = Project::select( 'slug', 'image', 'title_' . Config::get('app.locale'))->limit(10)->get();
+        $projects = Project::select('slug', 'image', 'title_' . Config::get('app.locale'))->limit(10)->get();
 
         return view('home')->with([
             'aboutUs' => $aboutUs,
@@ -40,7 +40,7 @@ class HomeController extends Controller
             'ourCustomers' => $ourCustomers,
             'alliances' => $alliances,
             'technicalSystems' => $technicalSystems,
-            'projects'=>$projects
+            'projects' => $projects
         ]);
     }
 }
