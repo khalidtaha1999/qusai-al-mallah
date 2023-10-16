@@ -30,7 +30,7 @@ class HomeController extends Controller
         $ourCustomers = OurCustomers::select('image')->get();
         $alliances = Alliance::get();
         $technicalSystems = TechnicalSystem::get();
-        $projects = Project::select('slug', 'image', 'title_' . Config::get('app.locale'))->limit(10)->get();
+        $projects = Project::select('slug', 'image', 'title_' . Config::get('app.locale'))->where('status',1)->limit(10)->get();
 
         return view('home')->with([
             'aboutUs' => $aboutUs,
