@@ -64,11 +64,11 @@ class ServiceResource extends Resource
                         Forms\Components\Textarea::make('content_ar')
                             ->label(__('general.contentAr'))
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(10000),
                         Forms\Components\Textarea::make('content_en')
                             ->label(__('general.contentEn'))
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(10000),
 
                     ]),
 
