@@ -41,7 +41,8 @@ class FileResource extends Resource
             ->schema([
                 Grid::make(1)
                     ->schema([
-                        FileUpload::make('file')->label(__('general.image'))->image()
+                        FileUpload::make('file')->label(__('general.image'))
+                            ->label(__('general.file'))
                             ->directory('file')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
@@ -52,12 +53,16 @@ class FileResource extends Resource
                     ]),
 
                 Forms\Components\Select::make('folder_id')
+                    ->label(__('general.categories'))
+                    ->required()
                     ->relationship('folder', 'title_' . Config::get('app.locale')),
 
                 Forms\Components\TextInput::make('title_en')
+                    ->label(__('general.titleEn'))
                     ->required()
                     ->maxLength(100),
                 Forms\Components\TextInput::make('title_ar')
+                    ->label(__('general.titleAr'))
                     ->required()
                     ->maxLength(100),
             ]);

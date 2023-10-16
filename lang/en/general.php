@@ -41,19 +41,20 @@ return [
     'send' => 'Send',
     'usefulLinks' => 'Useful Links',
     'technicalSystems' => 'Technical Systems',
-    'alliances' => 'Alliances',
+    'alliances' => 'Our Alliances',
     'ourCustomers' => ' Our Customers',
     'projects' => 'Our Projects',
     'projectDetails' => 'Project Details',
     'search' => 'Search',
     'knowledgeCenter' => 'Knowledge Center',
     'showAllProjects' => 'Show All Projects',
-    'blogDetails' => 'blogDetails',
+    'blogDetails' => 'Blog Details',
     'message'=>'Message',
     'category'=>'Category',
     'categories'=>'Categories',
     'files'=>'Files',
-
+    'link'=>'Link',
+    'file'=>'File',
 
 
 ];
