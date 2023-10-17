@@ -55,6 +55,7 @@ return [
     'files'=>'Files',
     'link'=>'Link',
     'file'=>'File',
+    'super'=>'Super Admin',
 
 
 ];

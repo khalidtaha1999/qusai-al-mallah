@@ -10,6 +10,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -82,6 +83,10 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('general.userName'))
                     ->searchable(),
+                IconColumn::make('super')
+                    ->label(__('general.super'))
+                    ->boolean(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('general.createdAt'))
                     ->sortable()
