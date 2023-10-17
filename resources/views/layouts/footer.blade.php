@@ -38,7 +38,7 @@
                         $contact = \App\Models\AboutUs::select('email', 'location', 'phone')->first();
                     @endphp
                     <p>
-                        {{$contact->location}} <br>
+                        <strong>{{__('general.location')}}:</strong>  {{$contact->location}} <br>
                         <strong>{{__('general.phone')}}:</strong> {{$contact->phone}}<br>
                         <strong>{{__('general.email')}}:</strong> {{$contact->email}}<br>
                     </p>

@@ -46,7 +46,7 @@ class FileResource extends Resource
                             ->directory('file')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
-                                    ->prepend(Carbon::now()->timestamp))->required()->maxSize(700)->acceptedFileTypes(['application/pdf'])
+                                    ->prepend(Carbon::now()->timestamp))->required()->acceptedFileTypes(['application/pdf'])
                             ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\FileUpload $component) {
                                 $livewire->validateOnly($component->getStatePath());
                             }),
@@ -65,6 +65,20 @@ class FileResource extends Resource
                     ->label(__('general.titleAr'))
                     ->required()
                     ->maxLength(100),
+
+
+                Grid::make()
+                    ->schema([
+                        Forms\Components\Textarea::make('description_ar')
+                            ->label(__('general.contentAr'))
+                            ->required()
+                            ->maxLength(10050),
+                        Forms\Components\Textarea::make('description_en')
+                            ->label(__('general.contentEn'))
+                            ->required()
+                            ->maxLength(10050),
+
+                    ]),
             ]);
     }
 
