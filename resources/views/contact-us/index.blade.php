@@ -31,7 +31,7 @@
                         <i class="bi bi-geo-alt flex-shrink-0"></i>
                         <div>
                             <h4>{{__('general.location')}}:</h4>
-                            <p>{{$aboutUs->location}}</p>
+                            <p>{{$aboutUs?->location}}</p>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -39,7 +39,7 @@
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h4>{{__('general.email')}}:</h4>
-                            <a href="mailto:"{{$aboutUs->email}}>{{$aboutUs->email}}</a>
+                            <a href="mailto:"{{$aboutUs?->email}}>{{$aboutUs?->email}}</a>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -47,7 +47,14 @@
                         <i class="bi bi-phone flex-shrink-0"></i>
                         <div>
                             <h4>{{__('general.phone')}}:</h4>
-                            <a href="tel:"{{$aboutUs->phone}}>{{$aboutUs->phone}}</a>
+                            <a href="tel:"{{$aboutUs?->phone}}>{{$aboutUs?->phone}}</a>
+                        </div>
+                    </div><!-- End Info Item -->
+                    <div class="info-item d-flex">
+                        <i class="bi bi-phone flex-shrink-0"></i>
+                        <div>
+                            <h4>{{__('general.phone')}}:</h4>
+                            <a href="tel:"{{$aboutUs?->phone2}}>{{$aboutUs?->phone2}}</a>
                         </div>
                     </div><!-- End Info Item -->
 

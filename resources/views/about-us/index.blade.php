@@ -23,18 +23,16 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
-
                 <div class="row gy-4" data-aos="fade-up">
                     <div class="col-lg-4">
-                        <img src="{{asset('storage/'.$aboutUs->image)}}" class="img-fluid mx-auto d-block" alt="">
+                        <img src="{{asset('storage/'.$aboutUs?->image)}}" class="img-fluid mx-auto d-block" alt="">
                     </div>
                     <div class="col-lg-8">
                         <div class="content ps-lg-5">
-                            {!! Config::get('app.locale')=='ar' ? $aboutUs->content_ar :$aboutUs->content_en !!}
+                            {!! Config::get('app.locale')=='ar' ? $aboutUs?->content_ar :$aboutUs?->content_en !!}
                         </div>
                     </div>
                 </div>
-
             </div>
         </section><!-- End About Section -->
 
