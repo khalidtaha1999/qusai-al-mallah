@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('content_ar');
             $table->string('image');
             $table->string('phone');
+            $table->string('phone2');
             $table->string('email');
             $table->string('location');
             $table->timestamps();

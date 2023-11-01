@@ -29,7 +29,6 @@ class HomeController extends Controller
         $whyChooseUs = WhyChooseUs::first();
         $ourCustomers = OurCustomers::select('image')->get();
         $alliances = Alliance::get();
-        $technicalSystems = TechnicalSystem::get();
         $projects = Project::select('slug', 'image', 'title_' . Config::get('app.locale'))->where('status',1)->limit(10)->get();
 
         return view('home')->with([
@@ -39,7 +38,6 @@ class HomeController extends Controller
             'whyChooseUs' => $whyChooseUs,
             'ourCustomers' => $ourCustomers,
             'alliances' => $alliances,
-            'technicalSystems' => $technicalSystems,
             'projects' => $projects
         ]);
     }

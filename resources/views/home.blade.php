@@ -8,42 +8,6 @@
         <section id="hero" class="hero d-flex align-items-center">
         </section><!-- End Hero Section -->
         <!-- ======= Why Choose Us Section ======= -->
-        <section id="why-us" class="why-us">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-header">
-                    <h2>{{__('general.whyChooseUs')}}</h2>
-                </div>
-
-                @isset($whyChooseUs)
-                    <div class="row g-0" data-aos="fade-up" data-aos-delay="200">
-                        <div class="col-xl-5 img-bg"
-                             style="background-image: url({{asset('storage/'.$whyChooseUs->image)}})"></div>
-                        <div class="col-xl-7 slides  position-relative">
-                            <div class="slides-1 swiper">
-                                <div class="swiper-wrapper">
-                                    @foreach($whyChooseUs?->sliders as $slider)
-                                        <div class="swiper-slide">
-                                            <div class="item">
-                                                {!! Config::get('app.locale')=='ar' ? $slider['content_ar'] : $slider['content_en'] !!}
-                                            </div>
-                                        </div><!-- End slide item -->
-                                    @endforeach
-                                </div>
-
-
-                                <div class="swiper-pagination"></div>
-
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-
-                        </div>
-                    </div>
-                @endisset
-
-            </div>
-        </section><!-- End Why Choose Us Section -->
 
 
         <section id="about" class="about">
@@ -55,17 +19,39 @@
 
                 <div class="row gy-4" data-aos="fade-up">
                     <div class="col-lg-4">
-                        <img src="storage/{{$aboutUs->image}}" class="img-fluid mx-auto d-block" alt="">
+                        <img src="storage/{{$aboutUs?->image}}" class="img-fluid mx-auto d-block" alt="">
                     </div>
                     <div class="col-lg-8">
                         <div class="content ps-lg-5">
-                            {!! Config::get('app.locale')=='ar' ? $aboutUs->content_ar :$aboutUs->content_en !!}
+                            {!! Config::get('app.locale')=='ar' ? $aboutUs?->content_ar :$aboutUs?->content_en !!}
                         </div>
                     </div>
                 </div>
 
             </div>
         </section><!-- End About Section -->
+
+
+        <div class="container mt-5">
+            <div class="section-header">
+                <h2>{{__('general.whyChooseUs')}}</h2>
+            </div>
+            @isset($whyChooseUs)
+                <div class="row">
+                    @foreach($whyChooseUs?->sliders as $slider)
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body shadow-lg">
+                                    <h5 class="card-title">{!! Config::get('app.locale')=='ar' ? $slider['title_ar'] : $slider['title_en'] !!}</h5>
+                                    <p class="card-text">{!! Config::get('app.locale')=='ar' ? $slider['content_ar'] : $slider['content_en'] !!}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endisset
+        </div>
+
 
         <!-- ======= Our Services Section ======= -->
         <!-- ======= Our Services Section ======= -->
@@ -79,53 +65,21 @@
                         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
                             <div class="service-content">
                                 <img class="img-fluid service-image" width="100px" src="storage/{{$service->image}}">
-                                <h4 class="title"><a class="stretched-link">{{Config::get('app.locale')=='ar'?$service->title_ar:$service->title_en}}</a></h4>
-                                <p class="description" style="{{Config::get('app.locale')=='ar'?'text-align: right':'text-align: left'}}">{{Config::get('app.locale')=='ar'?$service->content_ar:$service->content_en}}</p>
+                                <h4 class="title"><a
+                                        class="stretched-link">{{Config::get('app.locale')=='ar'?$service->title_ar:$service->title_en}}</a>
+                                </h4>
+                                <p class="description"
+                                   style="{{Config::get('app.locale')=='ar'?'text-align: right':'text-align: left'}}">{{Config::get('app.locale')=='ar'?$service->content_ar:$service->content_en}}</p>
                             </div>
                         </div><!-- End Service Item -->
                     @endforeach
                 </div>
             </div>
+
+            <div class="text-center "><a href="{{Config::get('app.locale').'/services'}}"
+                                         class="btn btn-outline-primary "
+                                         style="text-decoration:none">{{__('general.showAllServices')}}</a></div>
         </section><!-- End Our Services Section -->
-
-
-        <div class="container">
-            <div class="section-header">
-                <h2>{{__('general.technicalSystems')}}</h2>
-            </div>
-            <div class="row">
-                @foreach($technicalSystems as $key => $technical)
-                    @if($key % 3 == 0)
-            </div> <!-- Close the previous row -->
-            <div class="row justify-content-center"> <!-- Start a new centered row -->
-                @endif
-                <div class="col-md-4
-                @if(Config::get('app.locale')=='ar')
-                column-border_ar
-                border-bottom-small_ar
-                @else
-                border-bottom-small
-                  column-border
-                @endif
-                 text-center ">
-                    <div>
-                        <h5 class="card-title text-center mb-4">{{Config::get('app.locale')=='ar'?$technical->title_ar:$technical->title_en}}</h5>
-                        <div class="card-body">
-                            <div class="row justify-content-center">
-                                @foreach($technical->images as $image)
-                                    <div class="col-md-4 mb-3  ">
-                                        <img src="{{'storage/'.$image}}"
-                                             class=" card-img-top technicalImage rounded img-fluid" alt="Image 1">
-                                    </div>
-                                @endforeach
-                                <!-- Add more columns as needed -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
 
 
         <section id="services-list" class="services-list">

@@ -10,6 +10,7 @@ use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -63,7 +64,7 @@ class AboutUsEdit extends Page implements HasForms
                 TinyEditor::make('content_en')->label(__('general.contentEn'))->required()->maxLength(2000),
                 Fieldset::make(__('general.contactUs'))
                     ->schema([
-                        Grid::make(3)
+                        Grid::make(4)
                             ->schema([
                                 TextInput::make('email')
                                     ->label(__('general.email'))
@@ -75,13 +76,17 @@ class AboutUsEdit extends Page implements HasForms
                                     ->label(__('general.phone'))
                                     ->tel()
                                     ->required()
+                                    ->maxLength(20),
+                                TextInput::make('phone2')
+                                    ->label(__('general.phone'))
+                                    ->tel()
+                                    ->required()
+                                    ->maxLength(20),
 
-                                    ->maxLength(13),
-
-                                TextInput::make('location')
+                                Textarea::make('location')
                                     ->label(__('general.location'))
                                     ->required()
-                                    ->maxLength(30),
+                                    ->maxLength(255),
                             ])
                     ])
 
