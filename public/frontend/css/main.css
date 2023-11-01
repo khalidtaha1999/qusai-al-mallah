@@ -386,6 +386,8 @@ section {
     transition: all 0.5s;
     z-index: 997;
     padding: 24px 0;
+    background: rgba(27, 47, 69, 0.9);
+
 }
 
 @media (max-width: 1200px) {
@@ -651,36 +653,59 @@ section {
 --------------------------------------------------------------*/
 .hero {
     width: 100%;
-    background: url("../img/background.jpg") no-repeat bottom center;
+    background: url("../img/35895.jpg") no-repeat ;
     height: 100vh;
     background-size: cover;
 }
 
 
+/*.mobile_nav {*/
+/*    justify-content: space-between;}*/
+
 @media only screen and (max-width: 1177px) {
     /* Styles for screens up to 1177px wide */
     .hero {
-        background: url("../img/background.jpg") no-repeat;
+        background: url("../img/35895.jpg") no-repeat;
         background-size: contain;
         height: 53vh; /* You can leave or modify this as needed */
     }
+
+    .mobile_nav {
+        justify-content: space-between;
+    }
+    .logo-dis-login{
+        font-size:10px
+    }
 }
+
 
 @media only screen and (min-width: 767px) and (max-width: 1023px) {
     /* Styles for screens between 769px and 1032px wide */
     .hero {
-        background: url("../img/background.jpg") no-repeat;
+        background: url("../img/35895.jpg") no-repeat;
         background-size: contain;
         height: 50vh; /* You can leave or modify this as needed */
+    }
+    .mobile_nav {
+        justify-content: space-between;
+    }
+    .logo-dis-login{
+        font-size:10px
     }
 }
 
 @media only screen and (min-width: 767px) and (max-width: 1024px) {
     /* Styles for screens between 769px and 1032px wide */
     .hero {
-        background: url("../img/background.jpg") no-repeat;
+        background: url("../img/35895.jpg") no-repeat;
         background-size: contain;
         height: 135vh; /* You can leave or modify this as needed */
+    }
+    .mobile_nav {
+        justify-content: space-between;
+    }
+    .logo-dis-login{
+        font-size:10px
     }
 }
 
@@ -690,7 +715,6 @@ section {
 /*    position: absolute;*/
 /*    content: "";*/
 /*    width: 40%;*/
-/*    background: var(--color-secondary);*/
 /*    top: 0;*/
 /*    bottom: 0;*/
 /*  }*/
