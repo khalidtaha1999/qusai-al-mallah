@@ -6,7 +6,10 @@ use App\Models\AboutUs;
 use App\Models\WhyChooseUs;
 use Carbon\Carbon;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -48,23 +51,54 @@ class WhyChooseUsEdit extends Page implements HasForms
     {
         return $form
             ->schema([
-                FileUpload::make('image')->label(__('general.image'))->image()
-                    ->directory('why-choose-us')
-                    ->maxSize(200)
-                    ->getUploadedFileNameForStorageUsing(
-                        fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalName())
-                            ->prepend(Carbon::now()->timestamp))->required(),
+
                 Section::make(__('general.slider') . ' 1')->schema([
-                    TinyEditor::make('sliders.slider1.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(50)->required(),
-                    TinyEditor::make('sliders.slider1.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(50)->required(),
+                    Grid::make()
+                        ->schema([
+                            TextInput::make('sliders.slider1.title_ar')->label(__('general.titleAr'))->maxLength(30)->minLength(5)->required(),
+                            TextInput::make('sliders.slider1.title_en')->label(__('general.titleAr'))->maxLength(30)->minLength(5)->required(),
+                        ]),
+                    Grid::make()
+                        ->schema([
+                            textArea::make('sliders.slider1.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(50)->required(),
+                            textArea::make('sliders.slider1.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(50)->required(),
+                        ]),
                 ]),
                 Section::make(__('general.slider') . ' 2')->schema([
-                    TinyEditor::make('sliders.slider2.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(50)->required(),
-                    TinyEditor::make('sliders.slider2.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(50)->required(),
+                    Grid::make()
+                        ->schema([
+                            TextInput::make('sliders.slider2.title_ar')->label(__('general.titleAr'))->maxLength(30)->minLength(5)->required(),
+                            TextInput::make('sliders.slider2.title_en')->label(__('general.titleAr'))->maxLength(30)->minLength(5)->required(),
+                        ]),
+                    Grid::make()
+                        ->schema([
+                            textArea::make('sliders.slider2.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(50)->required(),
+                            textArea::make('sliders.slider2.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(50)->required(),
+                        ]),
                 ]),
                 Section::make(__('general.slider') . ' 3')->schema([
-                    TinyEditor::make('sliders.slider3.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(50)->required(),
-                    TinyEditor::make('sliders.slider3.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(50)->required(),
+                    Grid::make()
+                        ->schema([
+                            TextInput::make('sliders.slider3.title_ar')->label(__('general.titleAr'))->maxLength(30)->minLength(5)->required(),
+                            TextInput::make('sliders.slider3.title_en')->label(__('general.titleAr'))->maxLength(30)->minLength(5)->required(),
+                        ]),
+                    Grid::make()
+                        ->schema([
+                            textArea::make('sliders.slider3.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(50)->required(),
+                            textArea::make('sliders.slider3.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(50)->required(),
+                        ]),
+                ]),
+                Section::make(__('general.slider') . ' 4')->schema([
+                    Grid::make()
+                        ->schema([
+                            TextInput::make('sliders.slider4.title_ar')->label(__('general.titleAr'))->maxLength(30)->minLength(5)->required(),
+                            TextInput::make('sliders.slider4.title_en')->label(__('general.titleAr'))->maxLength(30)->minLength(5)->required(),
+                        ]),
+                    Grid::make()
+                        ->schema([
+                            textArea::make('sliders.slider4.content_ar')->label(__('general.contentAr'))->maxLength(2000)->minLength(50)->required(),
+                            textArea::make('sliders.slider4.content_en')->label(__('general.contentEn'))->maxLength(2000)->minLength(50)->required(),
+                        ]),
                 ]),
             ])
             ->statePath('data');

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('file');
             $table->string('title_en');
             $table->string('title_ar');
+            $table->text('description_en');
+            $table->text('description_ar');
             $table->foreign('folder_id')->references('id')->on('folders')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
