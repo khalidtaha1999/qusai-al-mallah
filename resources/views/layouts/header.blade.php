@@ -6,7 +6,7 @@
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="{{asset('frontend/img/header_logo.png')}}"   alt="">
 
-            <span class="text-white small mr-2 logo-dis-login">QUSAI AL MALLAH CONSULTING OFFICE<br><span>Accounting, administrative & Tax</span></span>
+            <span class="text-white small mr-2 logo-dis-login">QUSAI AL MALLAH CONSULTING OFFICE<br><span>Accounting, Administrative & Tax</span></span>
 
         </a>
 
