@@ -42,7 +42,7 @@ return [
     'usefulLinks' => 'Useful Links',
     'technicalSystems' => 'Technical Systems',
     'alliances' => 'Our Alliances',
-    'ourCustomers' => ' Our Partners',
+    'ourCustomers' => ' Our Clients',
     'projects' => 'Investment opportunities',
     'projectDetails' => 'Project Details',
     'search' => 'Search',

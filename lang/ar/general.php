@@ -44,7 +44,7 @@ return [
     'usefulLinks'=>'روابط مفيدة',
     'technicalSystems'=>'الأنظمة التقنية',
     'alliances'=>'حلفائنا',
-    'ourCustomers'=>'شركائنا',
+    'ourCustomers'=>'عملاؤنا',
     'projects'=>'فرص استثمارية',
     'projectDetails'=>'تفاصيل المشروع',
     'blogDetails'=>'تفاصيل المدونة',
