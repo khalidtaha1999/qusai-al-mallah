@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KnowledgeCenterController;
@@ -35,6 +36,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('/knowledge-center', [KnowledgeCenterController::class, 'index']);
     Route::get('/knowledge-center/{id}', [KnowledgeCenterController::class, 'show']);
     Route::get('/download/file/{file}', [KnowledgeCenterController::class, 'download']);
+    Route::post('/contact', [ContactController::class,'sendEmail'])->name('contact.send');
+
 
     Route::get('/projects', [ProjectController::class, 'index']);
 });
